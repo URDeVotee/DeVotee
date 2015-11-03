@@ -1,0 +1,61 @@
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.header {
+	alignment-adjust: auto;
+	border-bottom: 3px solid rgba(209, 209, 209, 0.4);
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+	font-size: 17px;
+	padding: 15px;
+	
+}
+
+.hearder .container{
+	alignment-adjust: auto;
+	width: 300px;
+}
+
+.header .container h1{
+	
+}
+
+.sign{
+	display: inline;
+	padding-top: 50%;
+}
+
+.border{
+	width: 46.5%;
+}
+
+.sign-up-border {
+	float: left;
+	background: rgba(255, 0, 0, 0.2);
+	border:rgba(255, 0, 0, 0.2);
+    border-style: solid;
+}
+
+.sign-up-border legend{
+	background: white;
+	border:rgba(255, 0, 0, 0.5);
+    border-style: solid;
+}
+
+.sign-in-border {
+	float:right;
+	background: rgba(0, 0, 255, 0.2);
+	border:rgba(0, 0, 255, 0.2);
+    border-style: solid;
+}
+
+.sign-in-border legend{
+	background: white;
+	border:rgba(0, 0, 255, 0.5);
+    border-style: solid;
+}
