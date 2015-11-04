@@ -2,7 +2,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "valentine940",
   database : "DeVotee"
 });
 //connection should be handled better!!
@@ -43,7 +43,7 @@ module.exports = {
 		var insertQuery = "INSERT INTO users (username, password, profilePic) VALUES (?, ?, ?)";
 		connection.query(insertQuery, [name, pwd, profilepic], function(error, results, fields){
 			if (!error)
-				console.log("Success: insert");
+				console.log("OK");
 			else
 				console.log(error);
 		});
@@ -56,22 +56,25 @@ module.exports = {
 		var checkQuery = "SELECT * FROM users WHERE username = ? and password = ?";
 		connection.query(checkQuery, [name, pwd], function (error, results, fields){
 			if (error){
+				console.log("connection error");
 				callback(false, "Error");
 			}
 			if (results.length > 0){
-				var successMsg = "Success: login";
+				var successMsg = "OK";
 				callback(true, results);
+				console.log(successMsg);
 			} else {
+				console.log("Error");
 				callback(false, "Error");
 			}
 		});
 	},
 
-	updateUserData: function(oldname, newname, newpwd)
-	{
-		var updateQuery = "UPDATE users SET username = ?, password = ? WHERE username = ?";
-		connection.query(updateQuery, [newname, newpwd, oldname], function (error, results, fields){
+	// updateUserData: function(oldname, newname, newpwd)
+	// {
+	// 	var updateQuery = "UPDATE users SET username = ?, password = ? WHERE username = ?";
+	// 	connection.query(updateQuery, [newname, newpwd, oldname], function (error, results, fields){
 
-		});
-	}
+	// 	});
+	// }
 };

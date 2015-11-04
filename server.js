@@ -30,10 +30,8 @@ app.post('/users', function(req, res){
     if (notExist) {
       db.insertUser(username, password);
       res.send(msg);
-      return;
     } else {
       res.send(msg);
-      return;
     }
   });
 });
@@ -42,16 +40,27 @@ app.post('/users', function(req, res){
 app.get('/users/login/:username/:password', function (req, res){
   var username = req.params.username;
   var password = req.params.password;
+  if (!username){
+    res.send({error:'Null username'});
+    return;
+  }
+  if (!password){
+    res.send({error:'Null password'});
+    return;
+  }
+
+  var data = {};
   db.checkLogin(username, password, function(match, results){
     if (match){
-      var data = {username:results[0].username, password:results[0].password};
+      data = {username:results[0].username, password:results[0].password};
+      //console.log(data);
       res.send(data);
-      return;
     } else {
-      res.send(results);
+      //console.log(results);
+      res.send({error:'Login failed. Check username or password.'});
     }
   });
-  // res.send(username);
+  //res.send(data);
   // console.log(username);
   // console.log(password);
 });
