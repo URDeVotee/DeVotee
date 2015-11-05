@@ -1,9 +1,20 @@
 //@Version 0.1.1
 
-// $(document).ready(function() {
-//   $(document).ajaxError(function() {
-//     console.log("There is an error");
-//   });
+var main = function() {
+  opened = false;
+  $('.toggle-button').click(function(){
+    if (!opened){
+      $('.nav').animate({top: "74px"}, 200);
+      $('.toggle-button').animate({top: "74px"}, 200);
+      opened = true;
+    }
+    else {
+      $('.nav').animate({top: "-=74px"}, 200);
+      $('.toggle-button').animate({top: "-=74px"}, 200);
+      opened = false;
+    }
+    });
+}
 
   $("#Sign-up-submit").click(function() {
     $.ajax({
@@ -31,9 +42,9 @@
     });
   });
   
-  $("#Sign-in-submit").click(function() {
+  $("#Log-in-submit").click(function() {
     $.ajax({
-      url: "users/login/" + $("#username").val() + "/" + $("#password").val(),
+      url: "users/login/" + $("#username-log-in").val() + "/" + $("#password-log-in").val(),
       type: "GET",
       dataType : "json",
       success: function( data ) {
@@ -54,3 +65,4 @@
     });
   });
 
+$(document).ready(main);
