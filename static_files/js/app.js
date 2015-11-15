@@ -26,6 +26,7 @@ var main = function() {
 		$('.body').css({'-webkit-filter': 'blur(5px)'});
 		$('.nav').css({'-webkit-filter': 'blur(0px)'});
 		$('.toggle-button').css({'-webkit-filter': 'blur(0px)'});
+		$('.header').css({'-webkit-filter': 'blur(0px)'});
 		signup = false;
 		}
     });
@@ -36,6 +37,7 @@ var main = function() {
 	  $('.body').css({'-webkit-filter': 'blur(15px)'});
 	  $('.nav').css({'-webkit-filter': 'blur(15px)'});
 	  $('.toggle-button').css({'-webkit-filter': 'blur(15px)'});
+	  $('.header').css({'-webkit-filter': 'blur(15px)'});
 		}
     });
 	
