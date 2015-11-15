@@ -23,6 +23,17 @@ li {
 	display: inline-block;
 }
 
+.signup-container {
+	height: 60%;
+	width: 30%;
+	background-color: white;
+	position:absolute;
+	z-index: 40;
+	border-radius: 10px;
+	margin-top: 15%;
+	margin-left: 35%;
+}
+
 .nav {
 	margin-top: -74px;
 	height: 4%;
