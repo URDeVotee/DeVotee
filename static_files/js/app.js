@@ -14,6 +14,14 @@ var main = function() {
       opened = false;
     }
     });
+	
+	$('.container').click(function(){
+    if (opened){
+      $('.nav').animate({top: "-=74px"}, 200);
+      $('.toggle-button').animate({top: "-=74px"}, 200);
+      opened = false;
+    }
+    });
 }
 
   $("#Sign-up-submit").click(function() {

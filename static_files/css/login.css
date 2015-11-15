@@ -2,6 +2,10 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 @import url(https://fonts.googleapis.com/css?family=Pacifico|UnifrakturMaguntia);
 
+a {
+	
+}
+
 body{
 	margin: 0;
 	padding: 0;
@@ -21,7 +25,7 @@ li {
 
 .nav {
 	margin-top: -74px;
-	height: 5%;
+	height: 4%;
 	width: 100%;
 	background-color: rgba(230, 230, 230,0.4);
 	position: relative;
@@ -101,10 +105,6 @@ li {
 	outline: none;
 }
 
-.toglo {
-	width: 75px;
-}
-
 .toggle-button {
 	position: absolute;
 	background-color: rgba(230, 230, 230,0.5);
@@ -113,8 +113,14 @@ li {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	border-top: none;
-	margin-left: 48.5%;
+	margin-left: 48%;
+	height: 40px;
+	width:70px;
 	z-index: 25;
+}
+
+.toggle-menu div{
+	margin-top: -28px;
 }
 
 .body{
@@ -158,6 +164,16 @@ li {
 	font-size: 48px;
 	font-weight: 200;
 	margin-top: -80px;
+}
+
+.small-logo p {
+	font-family: 'UnifrakturMaguntia', cursive;
+	font-size: 24px;
+}
+
+.small-logo p span{
+	font-family: 'Pacifico', cursive;
+	color: #5379fa !important;
 }
 
 .main-logo p span{
