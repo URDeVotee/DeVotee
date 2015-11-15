@@ -2,6 +2,7 @@
 
 var main = function() {
   opened = false;
+  signup = false;
   $('.toggle-button').click(function(){
     if (!opened){
       $('.nav').animate({top: "74px"}, 200);
@@ -20,6 +21,21 @@ var main = function() {
       $('.nav').animate({top: "-=74px"}, 200);
       $('.toggle-button').animate({top: "-=74px"}, 200);
       opened = false;
+    }else if (signup){
+		$('.signup-container').animate({top: "-=95%"}, 400);
+		signup = false;
+	}
+    });
+	
+	$('.signup').click(function(){
+    if (!signup){
+      $('.signup-container').animate({top: "95%"}, 400);
+    }
+    });
+	
+	$('.signup-container').hover(function(){
+    if (!signup){
+      signup=true;
     }
     });
 }

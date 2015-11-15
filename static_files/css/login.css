@@ -23,17 +23,6 @@ li {
 	display: inline-block;
 }
 
-.signup-container {
-	height: 60%;
-	width: 30%;
-	background-color: white;
-	position:absolute;
-	z-index: 40;
-	border-radius: 10px;
-	margin-top: 15%;
-	margin-left: 35%;
-}
-
 .nav {
 	margin-top: -74px;
 	height: 4%;
@@ -220,7 +209,19 @@ li {
 	margin-top: 20px;
 }
 
-.login{
+.signup-container {
+	height: 60%;
+	width: 30%;
+	background-color: rgb(255, 255, 255);
+	position:absolute;
+	z-index: 40;
+	border-radius: 10px;
+	margin-top: -40%;
+	margin-left: 35%;
+	border: 1px solid rgba(242, 242, 242, 0.2);
+}
+
+.Sign-up{
 	position: absolute;
 	top: calc(50% - 75px);
 	left: calc(50% - 50px);
@@ -230,41 +231,45 @@ li {
 	z-index: 2;
 }
 
-.login input[type=text]{
-	width: 250px;
+.Sign-up input[type=text]{
+	margin-top: -30%;
+	margin-left: -32%;
+	width: 80%;
 	height: 30px;
 	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	border: 2px solid rgba(140, 140, 140,0.6);
 	border-radius: 2px;
-	color: #fff;
+	color: rgb(0, 0, 0);
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
-	padding: 4px;
+	padding: 10px;
 }
 
-.login input[type=password]{
-	width: 250px;
+.Sign-up input[type=password]{
+	margin-left: -32%;
+	width: 80%;
 	height: 30px;
 	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
+	border: 2px solid rgba(140, 140, 140,0.6);
 	border-radius: 2px;
-	color: #fff;
+	color: rgb(0, 0, 0);
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
-	padding: 4px;
+	padding: 10px;
 	margin-top: 10px;
 }
 
-.login input[type=button]{
-	width: 260px;
-	height: 35px;
-	background: #fff;
-	border: 1px solid #fff;
+.Sign-up input[type=button]{
+	margin-left: -32%;
+	width: 87%;
+	height: 50px;
+	background: rgba(140, 140, 140,1);
+	border: 2px solid rgba(120, 120, 120,0.6);
 	cursor: pointer;
 	border-radius: 2px;
-	color: #a18d6c;
+	color: #fff;
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
@@ -272,32 +277,32 @@ li {
 	margin-top: 10px;
 }
 
-.login input[type=button]:hover{
+.Sign-up input[type=button]:hover{
 	opacity: 0.8;
 }
 
-.login input[type=button]:active{
+.Sign-up input[type=button]:active{
 	opacity: 0.6;
 }
 
-.login input[type=text]:focus{
+.Sign-up input[type=text]:focus{
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+	border: 2px solid rgba(0, 0, 0,0.9);
 }
 
-.login input[type=password]:focus{
+.Sign-up input[type=password]:focus{
 	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
+	border: 2px solid rgba(0, 0, 0,0.9);
 }
 
-.login input[type=button]:focus{
+.Sign-up input[type=button]:focus{
 	outline: none;
 }
 
 ::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
+   color: rgba(0,0,0,0.6);
 }
 
 ::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
+   color: rgba(0,0,0,0.6);
 }
