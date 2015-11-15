@@ -34,8 +34,8 @@ li {
 
 
 .menu li{
-	margin-left: 20px;
-	margin-right: 20px;;
+	margin-left: 90px;
+	margin-right: 90px;
 }
 
 .menu li input[type=text]{
@@ -182,6 +182,31 @@ li {
 
 .header div span{
 	color: #5379fa !important;
+}
+
+.signup{
+	position: absolute;
+	top: calc(50% - 75px);
+	left: calc(50% - 50px);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.signup input[type=button]{
+	width: 260px;
+	height: 50px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 5px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 20px;
 }
 
 .login{
