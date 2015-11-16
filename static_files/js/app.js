@@ -57,6 +57,10 @@ function checkCookie() {
     }
 }
 
+function setCookie() {
+	document.cookie = "Welcome Back";
+}
+
   $("#Sign-up-submit").click(function() {
     $.ajax({
       url: "users/",
@@ -71,9 +75,7 @@ function checkCookie() {
         if (data == 'OK') {
           console.log("user created Yeah!");
           //success then create cookie
-		  function setCookie(username, password) {
-			document.cookie = "Hi"
-			}
+		  setCookie();
         }
         else {
           console.log(data);
@@ -97,9 +99,7 @@ function checkCookie() {
           console.log("Success: login");
           $("#information").html("Success: login as " + data.username);
           //success then create cookie
-		  function setCookie(username, password) {
-			document.cookie = "Welcome Back";
-			}
+		  setCookie();
         }
         else if (data.error){
           $("#information").html("Error: " + data.error);
