@@ -2,6 +2,7 @@
 
 var main = function() {
   opened = false;
+  signup = false;
   $('.toggle-button').click(function(){
     if (!opened){
       $('.nav').animate({top: "74px"}, 200);
@@ -13,6 +14,37 @@ var main = function() {
       $('.toggle-button').animate({top: "-=74px"}, 200);
       opened = false;
     }
+    });
+	
+	$('.container').click(function(){
+    if (opened){
+      $('.nav').animate({top: "-=74px"}, 200);
+      $('.toggle-button').animate({top: "-=74px"}, 200);
+      opened = false;
+    }else if (signup){
+		$('.signup-container').animate({top: "-=95%"}, 400);
+		$('.body').css({'-webkit-filter': 'blur(5px)'});
+		$('.nav').css({'-webkit-filter': 'blur(0px)'});
+		$('.toggle-button').css({'-webkit-filter': 'blur(0px)'});
+		$('.header').css({'-webkit-filter': 'blur(0px)'});
+		signup = false;
+		}
+    });
+	
+	$('.signup').click(function(){
+    if (!signup){
+      $('.signup-container').animate({top: "95%"}, 400);
+	  $('.body').css({'-webkit-filter': 'blur(15px)'});
+	  $('.nav').css({'-webkit-filter': 'blur(15px)'});
+	  $('.toggle-button').css({'-webkit-filter': 'blur(15px)'});
+	  $('.header').css({'-webkit-filter': 'blur(15px)'});
+		}
+    });
+	
+	$('.signup-container').hover(function(){
+    if (!signup){
+      signup=true;
+		}
     });
 }
 
