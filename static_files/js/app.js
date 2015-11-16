@@ -46,6 +46,15 @@ var main = function() {
       signup=true;
 		}
     });
+	
+}
+	
+function checkCookie() {
+    if (document.cookie == false) {
+       
+    } else {
+        window.location.href = "http://www.baidu.com";
+    }
 }
 
   $("#Sign-up-submit").click(function() {
@@ -61,7 +70,10 @@ var main = function() {
         //console.log("You received some data!", data);
         if (data == 'OK') {
           console.log("user created Yeah!");
-          $("#information").html("Success: user created!");
+          //success then create cookie
+		  function setCookie(username, password) {
+			document.cookie = "Hi"
+			}
         }
         else {
           console.log(data);
@@ -84,7 +96,10 @@ var main = function() {
         if (data.username) {
           console.log("Success: login");
           $("#information").html("Success: login as " + data.username);
-          console.log(data);
+          //success then create cookie
+		  function setCookie(username, password) {
+			document.cookie = "Welcome Back";
+			}
         }
         else if (data.error){
           $("#information").html("Error: " + data.error);
