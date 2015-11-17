@@ -1,5 +1,5 @@
-//@Version 0.1.1
-
+//@Version 2.1
+var username;
 var main = function() {
   opened = false;
   signup = false;
@@ -46,6 +46,39 @@ var main = function() {
       signup=true;
 		}
     });
+	
+}
+	
+function checkCookie() {
+    if (document.cookie != null) {
+		var info = document.cookie.split("/");
+       $.ajax({
+		  url: "users/login/" + info[0] + "/" + info[1],
+		  type: "GET",
+		  dataType : "json",
+		  success: function( data ) {
+			if (data.username) {
+			  console.log("Success: login as " + data.username);
+			}
+			else if (data.error){
+			  console.log("Error: ", data.error);
+			}
+		  },
+		  error: function(){
+			console.log("There is an error");
+		  }
+		});
+    } else {
+        console.log("No cookie");
+    }
+}
+
+function setCookie() {
+	document.cookie = $("#username").val()+"/"+$("#password").val();
+}
+
+function setCookieLogin() {
+	document.cookie = $("#username-log-in").val()+"/"+$("#password-log-in").val();
 }
 
   $("#Sign-up-submit").click(function() {
@@ -61,7 +94,8 @@ var main = function() {
         //console.log("You received some data!", data);
         if (data == 'OK') {
           console.log("user created Yeah!");
-          $("#information").html("Success: user created!");
+          //success then create cookie
+		  setCookie();
         }
         else {
           console.log(data);
@@ -84,7 +118,8 @@ var main = function() {
         if (data.username) {
           console.log("Success: login");
           $("#information").html("Success: login as " + data.username);
-          console.log(data);
+          //success then create cookie
+		  setCookieLogin();
         }
         else if (data.error){
           $("#information").html("Error: " + data.error);
