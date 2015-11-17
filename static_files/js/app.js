@@ -50,10 +50,10 @@ var main = function() {
 }
 	
 function checkCookie() {
-    if (var info = document.cookie == true) {
-		var infoarray = info.split(" ");
+    if (document.cookie == true) {
+		var info = document.cookie.split(" ");
        $.ajax({
-		  url: "users/login/" + infoarray[0] + "/" + infoarray[1],
+		  url: "users/login/" + info[0] + "/" + info[1],
 		  type: "GET",
 		  dataType : "json",
 		  success: function( data ) {
