@@ -1,4 +1,4 @@
-//@Version 0.1.1
+//@Version 2.1
 var username;
 var password;
 var main = function() {
@@ -81,6 +81,11 @@ function setCookie() {
 	password = document.cookie = $("#password").val();
 }
 
+function setCookieLogin() {
+	username = document.cookie = $("#username-log-in").val();
+	password = document.cookie = $("#password-log-in").val();
+}
+
   $("#Sign-up-submit").click(function() {
     $.ajax({
       url: "users/",
@@ -119,7 +124,7 @@ function setCookie() {
           console.log("Success: login");
           $("#information").html("Success: login as " + data.username);
           //success then create cookie
-		  setCookie();
+		  setCookieLogin();
         }
         else if (data.error){
           $("#information").html("Error: " + data.error);
