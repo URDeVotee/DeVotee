@@ -51,7 +51,7 @@ var main = function() {
 	
 function checkCookie() {
     if (document.cookie != null) {
-		var info = document.cookie.split(" ");
+		var info = document.cookie.split("/");
        $.ajax({
 		  url: "users/login/" + info[0] + "/" + info[1],
 		  type: "GET",
