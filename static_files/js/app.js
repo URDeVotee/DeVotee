@@ -59,10 +59,8 @@ function checkCookie() {
 		  success: function( data ) {
 			if (data.username) {
 			  console.log("Success: login as " + data.username);
-			  window.location.href = "http://www.google.com";
 			}
 			else if (data.error){
-			  $("#information").html("Error: " + data.error);
 			  console.log("Error: ", data.error);
 			}
 		  },
