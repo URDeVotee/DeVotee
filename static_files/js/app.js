@@ -1,6 +1,5 @@
 //@Version 2.1
 var username;
-var password;
 var main = function() {
   opened = false;
   signup = false;
@@ -51,15 +50,15 @@ var main = function() {
 }
 	
 function checkCookie() {
-    if (document.cookie == true) {
+    if (var info = document.cookie == true) {
+		var infoarray = info.split(" ");
        $.ajax({
-		  url: "users/login/" + username + "/" + password,
+		  url: "users/login/" + infoarray[0] + "/" + infoarray[1],
 		  type: "GET",
 		  dataType : "json",
 		  success: function( data ) {
 			if (data.username) {
-			  console.log("Success: login with cookie");
-			  $("#information").html("Success: login as " + data.username);
+			  console.log("Success: login as " + data.username);
 			  window.location.href = "http://www.google.com";
 			}
 			else if (data.error){
@@ -77,13 +76,11 @@ function checkCookie() {
 }
 
 function setCookie() {
-	username = document.cookie = $("#username").val();
-	password = document.cookie = $("#password").val();
+	document.cookie = $("#username").val()+"/"+$("#password").val();
 }
 
 function setCookieLogin() {
-	username = document.cookie = $("#username-log-in").val();
-	password = document.cookie = $("#password-log-in").val();
+	document.cookie = $("#username-log-in").val()+"/"+$("#password-log-in").val();
 }
 
   $("#Sign-up-submit").click(function() {
