@@ -51,7 +51,7 @@ var main = function() {
 }
 	
 function checkCookie() {
-    if (document.cookie == false) {
+    if (document.cookie == true) {
        $.ajax({
 		  url: "users/login/" + username + "/" + password,
 		  type: "GET",
