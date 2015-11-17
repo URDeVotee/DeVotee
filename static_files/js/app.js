@@ -1,5 +1,6 @@
 //@Version 0.1.1
-
+var username;
+var password;
 var main = function() {
   opened = false;
   signup = false;
@@ -51,14 +52,33 @@ var main = function() {
 	
 function checkCookie() {
     if (document.cookie == false) {
-       
+       $.ajax({
+		  url: "users/login/" + username + "/" + password,
+		  type: "GET",
+		  dataType : "json",
+		  success: function( data ) {
+			if (data.username) {
+			  console.log("Success: login with cookie");
+			  $("#information").html("Success: login as " + data.username);
+			  window.location.href = "http://www.google.com";
+			}
+			else if (data.error){
+			  $("#information").html("Error: " + data.error);
+			  console.log("Error: ", data.error);
+			}
+		  },
+		  error: function(){
+			console.log("There is an error");
+		  }
+		});
     } else {
-        window.location.href = "http://www.baidu.com";
+        console.log("No cookie");
     }
 }
 
 function setCookie() {
-	document.cookie = "Welcome Back";
+	username = document.cookie = $("#username").val();
+	password = document.cookie = $("#password").val();
 }
 
   $("#Sign-up-submit").click(function() {
