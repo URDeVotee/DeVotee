@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 @import url(https://fonts.googleapis.com/css?family=Pacifico|UnifrakturMaguntia);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 .background {
 	background-image: url("../image/US.PNG");
@@ -46,4 +47,61 @@
 	background-color:rgba(255, 51, 0, 0.99);
 	-webkit-filter: blur(1px);
 	z-index:2;
+}
+
+.basic_info_ticket {
+	position: absolute;
+	vertical-align: middle;
+	height:400px;
+	width:550px;
+	border: 3px solid rgba(230, 230, 230, 0.4);
+	background-color:rgb(255, 255, 128);
+	z-index:3;
+	border-radius: 10px;
+	top: 30%;
+    left: 35%;
+}
+
+#dec1 {
+	font-weight:bolder;
+	font-size:40px;
+	margin-left:18%;
+	margin-top:-2px;
+	font-family: 'Montserrat', sans-serif;
+	cursor:default;
+}
+
+#dec2 {
+	font-weight:bold;
+	font-size:30px;
+	margin-top:-50px;
+	margin-left:24%;
+	font-family: 'Montserrat', sans-serif;
+	cursor:default;
+}
+
+#underline1 {
+	margin-top:-30px;
+	width:100%;
+	background:black;
+	height:3px;
+}
+
+#underline2 {
+	margin-top:275px;
+	width:100%;
+	background:black;
+	height:40px;
+}
+
+#underline-logo {
+	cursor:default;
+	color:rgb(255, 255, 128);
+	text-align:center;
+	font-family: 'UnifrakturMaguntia', cursive;
+	font-size:28px;
+}
+
+#underline-votee {
+	font-family: 'Pacifico', cursive;
 }
