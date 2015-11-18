@@ -99,12 +99,12 @@ var main = function() {
 }
 
 function info_flyin(){
-	$('.basic_info_ticket').animate({top: "28%"}, 1000);
+	$('.basic_info_ticket').animate({top: "1%"}, 1000);
 	$('.background').css({'-webkit-filter': 'blur(1px)'});
 }
 
 function info_flyout(){
-	$('.basic_info_ticket').animate({top: "-90%"}, 800);
+	$('.basic_info_ticket').animate({top: "-180%"}, 800);
 	$('.background').css({'-webkit-filter': 'blur(0px)'});
 	var target = event.target;
 	$(target).css({
@@ -133,7 +133,7 @@ function info_incomplete(){
 		});
 	}
 	$('.background').css({'-webkit-filter': 'blur(1px)'});
-	$('.basic_info_ticket').animate({top: "30%"}, 800);
+	$('.basic_info_ticket').animate({top: "1%"}, 800);
 }
 
 $(document).ready(main);
