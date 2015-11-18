@@ -88,6 +88,11 @@ function info_flyin(){
 function info_flyout(){
 	$('.basic_info_ticket').animate({top: "150%"}, 1000);
 	$('.background').css({'-webkit-filter': 'blur(0px)'});
+	var target = event.target;
+	$(target).css({
+		'background-color': 'rgb(102, 102, 102)',
+		'color': 'rgba(255, 255, 128, 0.95)'
+	});
 }
 
 $(document).ready(main);
