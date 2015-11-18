@@ -1,4 +1,4 @@
-//@Version 0.8
+//@Version 0.8.1
 var age_select = false;
 var occupation_select = false;
 var gender_select = false;
@@ -91,7 +91,9 @@ var main = function() {
 	$('#submit').click(function(event){
 		info_flyout();
 		if (!(age_select&&occupation_select&&gender_select)){
-			info_incomplete();
+			setTimeout(function() {
+				info_incomplete();
+			}, 2000);
 		}
     });
 }
@@ -130,6 +132,7 @@ function info_incomplete(){
 			'color': 'rgba(255, 255, 128,0.95)'
 		});
 	}
+	$('.background').css({'-webkit-filter': 'blur(1px)'});
 	$('.basic_info_ticket').animate({top: "30%"}, 800);
 }
 
