@@ -117,9 +117,8 @@ function setCookieLogin() {
         //console.log("You received some data!");
         if (data.username) {
           console.log("Success: login");
-          $("#information").html("Success: login as " + data.username);
-          //success then create cookie
-		  setCookieLogin();
+		      setCookieLogin();
+          window.location.href = "survey.html";
         }
         else if (data.error){
           $("#information").html("Error: " + data.error);

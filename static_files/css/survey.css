@@ -84,15 +84,6 @@ ul {
 	cursor:default;
 }
 
-#dec3 {
-	font-weight:bold;
-	font-size:15px;
-	margin-top:-50px;
-	margin-left:24%;
-	font-family: 'Montserrat', sans-serif;
-	cursor:default;
-}
-
 #underline1 {
 	margin-top:-30px;
 	width:100%;
@@ -109,7 +100,7 @@ ul {
 
 #underline-logo {
 	cursor:default;
-	color:rgb(255, 255, 128);
+	color:rgba(255, 255, 128,0.95);
 	text-align:center;
 	font-family: 'UnifrakturMaguntia', cursive;
 	font-size:28px;
@@ -125,10 +116,10 @@ ul {
 }
 
 .basic_info ul li div {
-	margin-top:-15px;
+	margin-top:-5px;
 }
 
-.basic_info ul li div span{
+.basic_info ul li .button span{
 	font-family: 'Montserrat', sans-serif;
 	font-size:14px;
 	margin-right: 18px;
