@@ -3,13 +3,22 @@
 var express = require("express");
 var db = require("./db");
 var app = express();
-
+var sessions = require("client-sessions");
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(sessions({
+  cookieName: 'mySession',
+  secret: 'blargadeeblargblarg',
+  duration: 24 * 60 * 60 * 1000,
+  activeDuration: 1000 * 60 * 5
+}));
 
 app.use(express.static('static_files'));
 
+app.get('/', function(req, res){
+  res.redirect('/DeVotee.html');
+});
 //CREATE user
 app.post('/users', function(req, res){
   var postBody = req.body;
@@ -29,6 +38,7 @@ app.post('/users', function(req, res){
       //return msg;
     if (notExist) {
       db.insertUser(username, password);
+      req.mySession.username = username;
       res.send(msg);
     } else {
       res.send(msg);
@@ -53,6 +63,7 @@ app.get('/users/login/:username/:password', function (req, res){
   db.checkLogin(username, password, function(match, results){
     if (match){
       data = {username:results[0].username, password:results[0].password};
+      req.mySession.username = username;
       //console.log(data);
       res.send(data);
     } else {
@@ -65,12 +76,30 @@ app.get('/users/login/:username/:password', function (req, res){
   // console.log(password);
 });
 
-app.get('/geninfo', function (req, res){
-
+//if the user is logged in, check whether the user has filled out the general survey
+app.get('/loggedIn', function (req, res){
+  //if the user logged in
+  var username = req.mySession.username;
+  if (req.mySession && username){
+    checkGenInfo(username, function(msg){
+      if (msg == "exists"){
+        //send the third page
+      }else {
+        //send the survey page
+      }
+    });
+  }
 });
+
+app.get('/logout', function(req, res){
+  res.mySession.destroy(function(){
+    res.redirect('/DeVotee.html');
+  });
+});
+
 //POST user's basic information into the database
 app.post('/submit/:age/:occupation/:gender', function (req, res){
-  var username = "root";
+  var username = req.mySession.username;
   var age = req.params.age;
   var occupation = req.params.occupation;
   var gender = req.params.gender;
