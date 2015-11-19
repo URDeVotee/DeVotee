@@ -77,15 +77,16 @@ app.get('/users/login/:username/:password', function (req, res){
 });
 
 //if the user is logged in, check whether the user has filled out the general survey
-app.get('/loggedIn', function (req, res){
+app.get('/login', function (req, res){
   //if the user logged in
   var username = req.mySession.username;
   if (req.mySession && username){
     checkGenInfo(username, function(msg){
       if (msg == "exists"){
         //send the third page
+        console.log("send third page");
       }else {
-        //send the survey page
+        res.redirect('/survey.html');
       }
     });
   }
