@@ -70,6 +70,12 @@ module.exports = {
 		});
 	},
 
+	insertGenInfo: function(name, age, gender, occupation)
+	{
+		var query = "INSERT INTO gen_info (username, age, gender, occupation) VALUE (?, ?, ?, ?)";
+		connection.query(query, [name, age, gender, occupation], function (error, results, fields){});
+	}
+
 	// updateUserData: function(oldname, newname, newpwd)
 	// {
 	// 	var updateQuery = "UPDATE users SET username = ?, password = ? WHERE username = ?";

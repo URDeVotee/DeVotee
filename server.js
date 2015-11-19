@@ -65,6 +65,18 @@ app.get('/users/login/:username/:password', function (req, res){
   // console.log(password);
 });
 
+app.get('/geninfo', function (req, res){
+
+});
+//POST user's basic information into the database
+app.post('/submit/:age/:occupation/:gender', function (req, res){
+  var username = "root";
+  var age = req.params.age;
+  var occupation = req.params.occupation;
+  var gender = req.params.gender;
+
+  insertGenInfo(username, age, gender, occupation);
+});
 
 
 
