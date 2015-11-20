@@ -50,7 +50,7 @@ var main = function() {
 }
 	
 function checkCookie() {
-    if (document.cookie != null) {
+    if (document.cookie != null && document.cookie != "") {
 		var info = document.cookie.split("/");
        $.ajax({
 		  url: "users/login/" + info[0] + "/" + info[1],
@@ -58,7 +58,7 @@ function checkCookie() {
 		  dataType : "json",
 		  success: function( data ) {
 			if (data.username) {
-			  console.log("Success: login as " + data.username);
+			  redirectTo();
 			}
 			else if (data.error){
 			  console.log("Error: ", data.error);
@@ -81,6 +81,23 @@ function setCookieLogin() {
 	document.cookie = $("#username-log-in").val()+"/"+$("#password-log-in").val();
 }
 
+function redirectTo(){
+  $.ajax({
+    url: "users/login",
+    type: "GET",
+    dataType: "json",
+
+    success: function(data){
+      if (typeof data.redirect == 'string')
+        window.location = data.redirect;
+      else
+        console.log("not a string");
+    },
+    error: function(){
+      console.log("direction error");
+    }
+  });
+}
   $("#Sign-up-submit").click(function() {
     $.ajax({
       url: "users/",
@@ -95,7 +112,8 @@ function setCookieLogin() {
         if (data == 'OK') {
           console.log("user created Yeah!");
           //success then create cookie
-		  setCookie();
+		      setCookie();
+          redirectTo();
         }
         else {
           console.log(data);
@@ -108,6 +126,7 @@ function setCookieLogin() {
     });
   });
   
+
   $("#Log-in-submit").click(function() {
     $.ajax({
       url: "users/login/" + $("#username-log-in").val() + "/" + $("#password-log-in").val(),
@@ -117,9 +136,12 @@ function setCookieLogin() {
         //console.log("You received some data!");
         if (data.username) {
           console.log("Success: login");
-          $("#information").html("Success: login as " + data.username);
-          //success then create cookie
-		  setCookieLogin();
+		      setCookieLogin();
+		      //console.log(data.username);
+          // xhttp.open("GET", "http://localhost:3000/users/login", true);
+          // xhttp.send();
+          redirectTo();
+          //window.location.href = "survey.html";
         }
         else if (data.error){
           $("#information").html("Error: " + data.error);
@@ -131,5 +153,6 @@ function setCookieLogin() {
       }
     });
   });
+
 
 $(document).ready(main);

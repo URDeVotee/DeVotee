@@ -1,0 +1,156 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(https://fonts.googleapis.com/css?family=Pacifico|UnifrakturMaguntia);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+ul {
+	list-style-type: none;
+}
+
+.background {
+	background-image: url("../image/US.PNG");
+	background-size: cover;
+	width:100%;
+	height:100%;
+	position:absolute;
+	opacity: 0.7;
+}
+
+.leftcover {
+	position: absolute;
+	margin-top: -1%;
+	left: 0;
+	height:102%;
+	width:2.5%;
+	background-color:rgba(0, 0, 153, 0.7);
+	-webkit-filter: blur(1px);
+	z-index:1;
+}
+
+.rightcover {
+	position: absolute;
+	margin-top: -1%;
+	right:0;
+	height:102%;
+	width:2.5%;
+	float:right;
+	background-color:rgba(0, 0, 153, 0.7);
+	-webkit-filter: blur(1px);
+	z-index:1;
+}
+
+.upcover {
+	position: absolute;
+	margin-top: -1%;
+	top:0;
+	left:0;
+	right:0;
+	width:100%;
+	height:5%;
+	background-color:rgba(255, 51, 0, 0.99);
+	-webkit-filter: blur(1px);
+	z-index:2;
+}
+
+.basic_info_ticket {
+	position: absolute;
+	vertical-align: middle;
+	height:400px;
+	width:550px;
+	border: 3px solid rgba(230, 230, 230, 0.4);
+	background-color:rgba(255, 255, 128, 0.95);
+	z-index:3;
+	border-radius: 10px;
+	top: -200%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+	box-shadow: -3px 4px 2px 0px rgba(89, 89, 89,0.6);
+}
+
+#dec1 {
+	font-weight:bolder;
+	font-size:40px;
+	margin-left:10%;
+	margin-top:-2px;
+	font-family: 'Montserrat', sans-serif;
+	cursor:default;
+}
+
+#dec2 {
+	font-weight:bold;
+	font-size:30px;
+	margin-top:-50px;
+	margin-left:22%;
+	font-family: 'Montserrat', sans-serif;
+	cursor:default;
+}
+
+#underline1 {
+	margin-top:-30px;
+	width:100%;
+	background:black;
+	height:3px;
+}
+
+#underline2 {
+	margin-top:-15px;
+	width:100%;
+	background:black;
+	height:40px;
+}
+
+#underline-logo {
+	cursor:default;
+	color:rgba(255, 255, 128,0.95);
+	text-align:center;
+	font-family: 'UnifrakturMaguntia', cursive;
+	font-size:28px;
+}
+
+#underline-votee {
+	font-family: 'Pacifico', cursive;
+}
+
+.basic_info ul li{
+	text-align:center;
+	margin-left:-20px;
+}
+
+.basic_info ul li div {
+	margin-top:-5px;
+}
+
+.basic_info ul li .button span{
+	font-family: 'Montserrat', sans-serif;
+	font-size:14px;
+	margin-right: 18px;
+	background-color: rgba(217, 217, 217,0.4);
+}
+
+.choice {
+	margin-left:-40px;
+	font-family: 'Montserrat', sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	cursor:default;
+}
+
+.container-gender {
+	margin-left:-12px;
+}
+
+.option {
+	cursor:pointer;
+}
+
+#submit {
+	cursor:pointer;
+	margin-left:-40px;
+	margin-top:10px;
+	font-family: 'Montserrat', sans-serif;
+	font-size:25px;
+	font-weight:bold;
+	background:rgba(217, 217, 217,0.6);
+}
