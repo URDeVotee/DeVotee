@@ -104,7 +104,7 @@ var main = function() {
 			}, 2000);
 		} else {
 			$.ajax({
-		      url: "submit",
+		      url: "/submit",
 		      type: "POST",
 		      dataType : "text",
 		      data : { age: age_value,

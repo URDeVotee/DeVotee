@@ -72,8 +72,15 @@ module.exports = {
 
 	insertGenInfo: function(name, age, gender, occupation)
 	{
+
 		var query = "INSERT INTO gen_info (username, age, gender, occupation) VALUE (?, ?, ?, ?)";
-		connection.query(query, [name, age, gender, occupation], function (error, results, fields){});
+		connection.query(query, [name, age, gender, occupation], function (error, results, fields){
+			if (error) 
+			{
+				console.log(error);
+			}
+
+		});
 	},
 
 	checkGenInfo: function(name, callback)

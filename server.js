@@ -95,13 +95,15 @@ app.get('/users/logout', function(req, res){
 });
 
 //POST user's basic information into the database
-app.post('/submit/:age/:occupation/:gender', function (req, res){
+app.post('/submit', function (req, res){
+  var postbody = req.body;
   var username = req.mySession.username;
-  var age = req.params.age;
-  var occupation = req.params.occupation;
-  var gender = req.params.gender;
+  var age = postbody.age;
+  var occupation = postbody.occupation;
+  var gender = postbody.gender;
 
   db.insertGenInfo(username, age, gender, occupation);
+  res.send("OK");
 });
 
 
