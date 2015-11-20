@@ -1,6 +1,14 @@
 //@Version 0.1
 
 var main = function() {
+	infoquery();
+
+	$('.ReVote').click(function() {
+		window.location.href = "survey.html";
+	});
+}
+
+function infoquery(){
 	$.ajax({
 		url: "/geninfo",
 		type: "GET",
@@ -16,11 +24,6 @@ var main = function() {
 	      console.log("direction error");
 	    }
 	});
-
-	$('.ReVote').click(function() {
-		window.location.href = "survey.html";
-	});
 }
-
 
 $(document).ready(main);
