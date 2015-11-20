@@ -75,8 +75,7 @@ module.exports = {
 
 		var query = "INSERT INTO gen_info (username, age, gender, occupation) VALUE (?, ?, ?, ?)";
 		connection.query(query, [name, age, gender, occupation], function (error, results, fields){
-			if (error) 
-			{
+			if (error) {
 				console.log(error);
 			}
 
@@ -94,6 +93,16 @@ module.exports = {
 			}
 		});
 	},
+
+	updateGenInfo: function(name, age, gender, occupation)
+	{
+		var query = "UPDATE gen_info SET age=?, gender=?, occupation=? WHERE username=?";
+		connection.query(query, [age, gender, occupation, name], function (error, results, fields){
+			if (error) {
+				console.log(error);
+			}
+		});
+	}
 
 	// updateUserData: function(oldname, newname, newpwd)
 	// {
