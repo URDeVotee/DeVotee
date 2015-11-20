@@ -50,7 +50,7 @@ var main = function() {
 }
 	
 function checkCookie() {
-    if (document.cookie != null) {
+    if (document.cookie != null && document.cookie != "") {
 		var info = document.cookie.split("/");
        $.ajax({
 		  url: "users/login/" + info[0] + "/" + info[1],
@@ -58,7 +58,8 @@ function checkCookie() {
 		  dataType : "json",
 		  success: function( data ) {
 			if (data.username) {
-			  console.log("Success: login as " + data.username);
+			  xhttp.open("GET", "users/login/" + data.username + "/" + data.password, true);
+        xhttp.send();
 			}
 			else if (data.error){
 			  console.log("Error: ", data.error);
@@ -95,7 +96,9 @@ function setCookieLogin() {
         if (data == 'OK') {
           console.log("user created Yeah!");
           //success then create cookie
-		  setCookie();
+		      setCookie();
+          xhttp.open("GET", "users/login/" + $("#username").val() + "/" + password: $("#password").val(), true);
+          xhttp.send();
         }
         else {
           console.log(data);
@@ -117,8 +120,10 @@ function setCookieLogin() {
         //console.log("You received some data!");
         if (data.username) {
           console.log("Success: login");
-		  setCookieLogin();
-		  console.log(data.username);
+		      setCookieLogin();
+		      //console.log(data.username);
+          xhttp.open("GET", "users/login/" + data.username + "/" + data.password, true);
+          xhttp.send();
           //window.location.href = "survey.html";
         }
         else if (data.error){
