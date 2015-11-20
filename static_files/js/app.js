@@ -125,9 +125,12 @@ function redirectTo(){
 
   $("#Log-in-submit").click(function() {
     $.ajax({
-      url: "users/login/" + $("#username-log-in").val() + "/" + $("#password-log-in").val(),
-      type: "GET",
+      url: "users/checklogin",
+      type: "POST",
       dataType : "json",
+      data: { username: $("#username-log-in").val(),
+              password: $("#password-log-in").val()
+            },
       success: function( data ) {
         if (data.username) {
 		      setCookieLogin();

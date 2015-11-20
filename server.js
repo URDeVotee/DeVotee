@@ -45,9 +45,12 @@ app.post('/users', function(req, res){
   });
 });
 
-app.get('/users/login/:username/:password', function (req, res){
-  var username = req.params.username;
-  var password = req.params.password;
+app.post('/users/checklogin', function (req, res){
+  var postbody = req.body;
+  var username = postbody.username;
+  var password = postbody.password;
+  //var username = req.params.username;
+  //var password = req.params.password;
   if (!username){
     res.send({error:'Null username'});
     return;
