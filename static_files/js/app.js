@@ -53,9 +53,12 @@ function checkCookie() {
     if (document.cookie != null && document.cookie != "") {
 		var info = document.cookie.split("/");
        $.ajax({
-		  url: "users/login/" + info[0] + "/" + info[1],
-		  type: "GET",
+		  url: "users/checklogin/",
+		  type: "POST",
 		  dataType : "json",
+      data: { username: info[0],
+              password: info[1]
+            },
 		  success: function( data ) {
 			if (data.username) {
 			  redirectTo();

@@ -98,6 +98,19 @@ module.exports = {
 		});
 	},
 
+	updateGeninfo: function(name, age, gender, occupation)
+	{
+
+		var query = "UPDATE gen_info SET age=?, gender=?, occupation=? WHERE username=?";
+		connection.query(query, [age, gender, occupation, username], function (error, results, fields){
+			if (error) 
+			{
+				console.log(error);
+			}
+
+		});
+	}
+
 	// updateUserData: function(oldname, newname, newpwd)
 	// {
 	// 	var updateQuery = "UPDATE users SET username = ?, password = ? WHERE username = ?";

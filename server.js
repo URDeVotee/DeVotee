@@ -109,6 +109,17 @@ app.post('/submit', function (req, res){
   res.send("OK");
 });
 
+app.post('/update_geninfo', function (req, res){
+  var postbody = req.body;
+  var username = req.mySession.username;
+  var age = postbody.age;
+  var occupation = postbody.occupation;
+  var gender = postbody.gender;
+
+  db.updateGeninfo(username, age, gender, occupation);
+  res.send("OK");
+});
+
 
 
 
