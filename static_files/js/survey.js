@@ -126,7 +126,7 @@ var main = function() {
 		}
     });
 
-    $('logout').click(function(event){
+    $('.logout').click(function(event){
     	$.ajax({
 		    url: "users/logout",
 		    type: "GET",

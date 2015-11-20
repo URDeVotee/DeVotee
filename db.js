@@ -87,6 +87,9 @@ module.exports = {
 	{
 		var query = "SELECT username FROM gen_info WHERE username = ?";
 		connection.query(query, [name], function (error, results, fields){
+			if (error){
+				console.log(error);
+			}
 			if (results.length > 0){
 				callback("exists");
 			} else{

@@ -89,9 +89,9 @@ app.get('/users/login', function (req, res){
 });
 
 app.get('/users/logout', function(req, res){
-  res.mySession.destroy(function(){
-    res.redirect('/DeVotee.html');
-  });
+  console.log(req.mySession.username);
+  delete req.mySession;
+  res.send({redirect:'DeVotee.html'});
 });
 
 //POST user's basic information into the database
