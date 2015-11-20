@@ -102,7 +102,7 @@ module.exports = {
 	{
 
 		var query = "UPDATE gen_info SET age=?, gender=?, occupation=? WHERE username=?";
-		connection.query(query, [age, gender, occupation, username], function (error, results, fields){
+		connection.query(query, [age, gender, occupation, name], function (error, results, fields){
 			if (error) 
 			{
 				console.log(error);
