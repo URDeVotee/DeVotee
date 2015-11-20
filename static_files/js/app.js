@@ -50,6 +50,7 @@ var main = function() {
 }
 	
 function checkCookie() {
+    var xhttp = new XMLHttpRequest();
     if (document.cookie != null && document.cookie != "") {
 		var info = document.cookie.split("/");
        $.ajax({
@@ -83,6 +84,7 @@ function setCookieLogin() {
 }
 
   $("#Sign-up-submit").click(function() {
+    var xhttp = new XMLHttpRequest();
     $.ajax({
       url: "users/",
       type: "POST",
@@ -97,7 +99,7 @@ function setCookieLogin() {
           console.log("user created Yeah!");
           //success then create cookie
 		      setCookie();
-          xhttp.open("GET", "users/login/" + $("#username").val() + "/" + password: $("#password").val(), true);
+          xhttp.open("GET", "users/login/" + data.username + "/" + data.password, true);
           xhttp.send();
         }
         else {
@@ -112,6 +114,7 @@ function setCookieLogin() {
   });
   
   $("#Log-in-submit").click(function() {
+    var xhttp = new XMLHttpRequest();
     $.ajax({
       url: "users/login/" + $("#username-log-in").val() + "/" + $("#password-log-in").val(),
       type: "GET",
@@ -122,7 +125,7 @@ function setCookieLogin() {
           console.log("Success: login");
 		      setCookieLogin();
 		      //console.log(data.username);
-          xhttp.open("GET", "users/login/" + data.username + "/" + data.password, true);
+          xhttp.open("GET", "users/login/" + $("#username-log-in").val() + "/" + $("#password-log-in").val(), true);
           xhttp.send();
           //window.location.href = "survey.html";
         }
