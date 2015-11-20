@@ -106,7 +106,11 @@ var main = function() {
 			$.ajax({
 		      url: "/submit",
 		      type: "POST",
-		      dataType : "json",
+		      dataType : "text",
+		      data : { age: age_value,
+		               occupation: occupation_value,
+		               gender: gender_value
+		             },
 		      success: function( data ) {
 		        if (data == 'OK') {
 		          console.log("Get your survey");
@@ -124,17 +128,20 @@ var main = function() {
 
     $('logout').click(function(event){
     	$.ajax({
-		      url: "/user/logout",
-		      type: "GET",
-		      dataType : "json",
-		      success: function( data ) {
-		      	document.cookie = "";
-		        redirectTo();
-		      },
-		      error: function(){
-		        console.log("There is an error in LOGOUT");
-		      }
-		    });
+		    url: "users/logout",
+		    type: "GET",
+		    dataType: "json",
+
+		    success: function(data){
+		      if (typeof data.redirect == 'string')
+		        window.location = data.redirect;
+		      else
+		        console.log("not a string");
+		    },
+		    error: function(){
+		      console.log("direction error");
+		    }
+		});
     })
 }
 
@@ -174,24 +181,6 @@ function info_incomplete(){
 	}
 	$('.background').css({'-webkit-filter': 'blur(1px)'});
 	$('.basic_info_ticket').animate({top: "1%"}, 800);
-}
-
-function redirectTo(){
-  $.ajax({
-    url: "users/login",
-    type: "GET",
-    dataType: "json",
-
-    success: function(data){
-      if (typeof data.redirect == 'string')
-        window.location = data.redirect;
-      else
-        console.log("not a string");
-    },
-    error: function(){
-      console.log("direction error");
-    }
-  });
 }
 
 $(document).ready(main);
