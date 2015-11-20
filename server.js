@@ -77,22 +77,23 @@ app.get('/users/login/:username/:password', function (req, res){
 });
 
 //if the user is logged in, check whether the user has filled out the general survey
-app.get('/login', function (req, res){
+app.get('/users/login', function (req, res){
   //if the user logged in
   var username = req.mySession.username;
   if (req.mySession && username){
-    checkGenInfo(username, function(msg){
+    db.checkGenInfo(username, function(msg){
       if (msg == "exists"){
         //send the third page
         console.log("send third page");
       }else {
-        res.redirect('/survey.html');
+        console.log("send survey page");
+        res.send({redirect:'/survey.html'});
       }
     });
   }
 });
 
-app.get('/logout', function(req, res){
+app.get('/users/logout', function(req, res){
   res.mySession.destroy(function(){
     res.redirect('/DeVotee.html');
   });
@@ -105,7 +106,7 @@ app.post('/submit/:age/:occupation/:gender', function (req, res){
   var occupation = req.params.occupation;
   var gender = req.params.gender;
 
-  insertGenInfo(username, age, gender, occupation);
+  db.insertGenInfo(username, age, gender, occupation);
 });
 
 

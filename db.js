@@ -86,7 +86,7 @@ module.exports = {
 				callback("notExists");
 			}
 		});
-	}
+	},
 
 	// updateUserData: function(oldname, newname, newpwd)
 	// {

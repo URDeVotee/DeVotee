@@ -50,7 +50,6 @@ var main = function() {
 }
 	
 function checkCookie() {
-    var xhttp = new XMLHttpRequest();
     if (document.cookie != null && document.cookie != "") {
 		var info = document.cookie.split("/");
        $.ajax({
@@ -59,8 +58,7 @@ function checkCookie() {
 		  dataType : "json",
 		  success: function( data ) {
 			if (data.username) {
-			  xhttp.open("GET", "users/login/" + data.username + "/" + data.password, true);
-        xhttp.send();
+			  redirectTo();
 			}
 			else if (data.error){
 			  console.log("Error: ", data.error);
@@ -83,8 +81,24 @@ function setCookieLogin() {
 	document.cookie = $("#username-log-in").val()+"/"+$("#password-log-in").val();
 }
 
+function redirectTo(){
+  $.ajax({
+    url: "users/login",
+    type: "GET",
+    dataType: "json",
+
+    success: function(data){
+      if (typeof data.redirect == 'string')
+        window.location = data.redirect;
+      else
+        console.log("not a string");
+    },
+    error: function(){
+      console.log("direction error");
+    }
+  });
+}
   $("#Sign-up-submit").click(function() {
-    var xhttp = new XMLHttpRequest();
     $.ajax({
       url: "users/",
       type: "POST",
@@ -99,8 +113,7 @@ function setCookieLogin() {
           console.log("user created Yeah!");
           //success then create cookie
 		      setCookie();
-          xhttp.open("GET", "users/login/" + data.username + "/" + data.password, true);
-          xhttp.send();
+          redirectTo();
         }
         else {
           console.log(data);
@@ -113,8 +126,8 @@ function setCookieLogin() {
     });
   });
   
+
   $("#Log-in-submit").click(function() {
-    var xhttp = new XMLHttpRequest();
     $.ajax({
       url: "users/login/" + $("#username-log-in").val() + "/" + $("#password-log-in").val(),
       type: "GET",
@@ -125,8 +138,9 @@ function setCookieLogin() {
           console.log("Success: login");
 		      setCookieLogin();
 		      //console.log(data.username);
-          xhttp.open("GET", "users/login/" + $("#username-log-in").val() + "/" + $("#password-log-in").val(), true);
-          xhttp.send();
+          // xhttp.open("GET", "http://localhost:3000/users/login", true);
+          // xhttp.send();
+          redirectTo();
           //window.location.href = "survey.html";
         }
         else if (data.error){
@@ -139,5 +153,6 @@ function setCookieLogin() {
       }
     });
   });
+
 
 $(document).ready(main);
