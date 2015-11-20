@@ -82,7 +82,8 @@ app.get('/users/login', function (req, res){
     db.checkGenInfo(username, function(msg){
       if (msg == "exists"){
         //send the third page
-        console.log("send third page");
+        console.log("send geninfo page");
+        res.send({redirect: '/geninfo.html'});
       }else {
         console.log("send survey page");
         res.send({redirect:'/survey.html'});
@@ -105,21 +106,34 @@ app.post('/submit', function (req, res){
   var occupation = postbody.occupation;
   var gender = postbody.gender;
 
-  db.insertGenInfo(username, age, gender, occupation);
+  db.checkGenInfo(username, function(msg){
+    if (msg == "exists"){
+      db.updateGeninfo(username, age, gender, occupation);
+    }else {
+      db.insertGenInfo(username, age, gender, occupation);
+    }
+  });
   res.send("OK");
 });
 
-app.post('/update_geninfo', function (req, res){
+app.get('/geninfo', function (req, res){
   var postbody = req.body;
   var username = req.mySession.username;
-  var age = postbody.age;
-  var occupation = postbody.occupation;
-  var gender = postbody.gender;
 
-  db.updateGeninfo(username, age, gender, occupation);
-  res.send("OK");
+  var data = {};
+  db.getGeninfo(username, function(results){
+    if (results == "error" || results == "notExists")
+      res.send({error: results});
+    else
+    {
+      data = {username: results[0].username,
+              age: results[0].age,
+              gender: results[0].gender,
+              occupation: results[0].occupation};
+      res.send(data);
+    }
+  });
 });
-
 
 
 

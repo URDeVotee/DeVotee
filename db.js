@@ -109,6 +109,23 @@ module.exports = {
 			}
 
 		});
+	},
+
+	getGeninfo: function(name, callback)
+	{
+		var query = "SELECT * FROM gen_info WHERE username=?";
+		connection.query(query, [name], function (error, results, fields){
+			if (error){
+				console.log(error);
+				callback("error");
+			}
+			if (results.length > 0){
+				callback(results);
+			}
+			else {
+				callback("notExists");
+			}
+		});
 	}
 
 	// updateUserData: function(oldname, newname, newpwd)
