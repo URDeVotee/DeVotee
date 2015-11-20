@@ -113,7 +113,9 @@ var main = function() {
 		             },
 		      success: function( data ) {
 		        if (data == 'OK') {
-		          console.log("Get your survey");
+		          setTimeout(function() {
+						portal();
+					}, 1500);
 		        }
 		        else {
 		          
@@ -144,6 +146,7 @@ var main = function() {
 		});
     })
 }
+
 
 function info_flyin(){
 	$('.basic_info_ticket').animate({top: "1%"}, 1000);
@@ -181,6 +184,10 @@ function info_incomplete(){
 	}
 	$('.background').css({'-webkit-filter': 'blur(1px)'});
 	$('.basic_info_ticket').animate({top: "1%"}, 800);
+}
+
+function portal(){
+	window.location.href = "Votee.html";
 }
 
 $(document).ready(main);
