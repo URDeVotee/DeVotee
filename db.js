@@ -87,6 +87,9 @@ module.exports = {
 	{
 		var query = "SELECT username FROM gen_info WHERE username = ?";
 		connection.query(query, [name], function (error, results, fields){
+			if (error){
+				console.log(error);
+			}
 			if (results.length > 0){
 				callback("exists");
 			} else{
@@ -94,6 +97,36 @@ module.exports = {
 			}
 		});
 	},
+
+	updateGeninfo: function(name, age, gender, occupation)
+	{
+
+		var query = "UPDATE gen_info SET age=?, gender=?, occupation=? WHERE username=?";
+		connection.query(query, [age, gender, occupation, username], function (error, results, fields){
+			if (error) 
+			{
+				console.log(error);
+			}
+
+		});
+	},
+
+	getGeninfo: function(name, callback)
+	{
+		var query = "SELECT * FROM gen_info WHERE username=?";
+		connection.query(query, [name], function (error, results, fields){
+			if (error){
+				console.log(error);
+				callback("error");
+			}
+			if (results.length > 0){
+				callback(results);
+			}
+			else {
+				callback("notExists");
+			}
+		});
+	}
 
 	// updateUserData: function(oldname, newname, newpwd)
 	// {

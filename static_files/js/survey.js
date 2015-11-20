@@ -125,6 +125,24 @@ var main = function() {
 		    });
 		}
     });
+
+    $('.logout').click(function(event){
+    	$.ajax({
+		    url: "users/logout",
+		    type: "GET",
+		    dataType: "json",
+
+		    success: function(data){
+		      if (typeof data.redirect == 'string')
+		        window.location = data.redirect;
+		      else
+		        console.log("not a string");
+		    },
+		    error: function(){
+		      console.log("direction error");
+		    }
+		});
+    })
 }
 
 function info_flyin(){

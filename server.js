@@ -45,9 +45,12 @@ app.post('/users', function(req, res){
   });
 });
 
-app.get('/users/login/:username/:password', function (req, res){
-  var username = req.params.username;
-  var password = req.params.password;
+app.post('/users/checklogin', function (req, res){
+  var postbody = req.body;
+  var username = postbody.username;
+  var password = postbody.password;
+  //var username = req.params.username;
+  //var password = req.params.password;
   if (!username){
     res.send({error:'Null username'});
     return;
@@ -79,7 +82,8 @@ app.get('/users/login', function (req, res){
     db.checkGenInfo(username, function(msg){
       if (msg == "exists"){
         //send the third page
-        console.log("send third page");
+        console.log("send geninfo page");
+        res.send({redirect: '/geninfo.html'});
       }else {
         console.log("send survey page");
         res.send({redirect:'/survey.html'});
@@ -89,9 +93,9 @@ app.get('/users/login', function (req, res){
 });
 
 app.get('/users/logout', function(req, res){
-  res.mySession.destroy(function(){
-    res.redirect('/DeVotee.html');
-  });
+  console.log(req.mySession.username);
+  delete req.mySession;
+  res.send({redirect:'DeVotee.html'});
 });
 
 //POST user's basic information into the database
@@ -102,10 +106,34 @@ app.post('/submit', function (req, res){
   var occupation = postbody.occupation;
   var gender = postbody.gender;
 
-  db.insertGenInfo(username, age, gender, occupation);
+  db.checkGenInfo(username, function(msg){
+    if (msg == "exists"){
+      db.updateGeninfo(username, age, gender, occupation);
+    }else {
+      db.insertGenInfo(username, age, gender, occupation);
+    }
+  });
   res.send("OK");
 });
 
+app.get('/geninfo', function (req, res){
+  var postbody = req.body;
+  var username = req.mySession.username;
+
+  var data = {};
+  db.getGeninfo(username, function(results){
+    if (results == "error" || results == "notExists")
+      res.send({error: results});
+    else
+    {
+      data = {username: results[0].username,
+              age: results[0].age,
+              gender: results[0].gender,
+              occupation: results[0].occupation};
+      res.send(data);
+    }
+  });
+});
 
 
 
