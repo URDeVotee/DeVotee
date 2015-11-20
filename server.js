@@ -19,7 +19,7 @@ app.use(express.static('static_files'));
 app.get('/', function(req, res){
   res.redirect('/DeVotee.html');
 });
-//CREATE user
+
 app.post('/users', function(req, res){
   var postBody = req.body;
   var username = postBody.username;
@@ -35,7 +35,6 @@ app.post('/users', function(req, res){
   }
 
   db.userExistInDB(username, function(notExist, msg){
-      //return msg;
     if (notExist) {
       db.insertUser(username, password);
       req.mySession.username = username;
@@ -46,7 +45,6 @@ app.post('/users', function(req, res){
   });
 });
 
-//READ user : check log in
 app.get('/users/login/:username/:password', function (req, res){
   var username = req.params.username;
   var password = req.params.password;
@@ -71,9 +69,6 @@ app.get('/users/login/:username/:password', function (req, res){
       res.send({error:'Login failed. Check username or password.'});
     }
   });
-  //res.send(data);
-  // console.log(username);
-  // console.log(password);
 });
 
 //if the user is logged in, check whether the user has filled out the general survey

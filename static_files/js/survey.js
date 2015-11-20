@@ -1,7 +1,10 @@
-//@Version 0.8.1
+//@Version 0.9.0
 var age_select = false;
 var occupation_select = false;
 var gender_select = false;
+var age_value="";
+var occupation_value="";
+var gender_value="";
 
 var main = function() {
 	
@@ -21,6 +24,7 @@ var main = function() {
 				'background-color': 'rgba(255, 255, 128, 0.95)',
 				'color': 'black'
 			});
+			age_value = target.innerText;
 		}
 		else {
 			$('.container-age .option').css({
@@ -32,6 +36,7 @@ var main = function() {
 				'background-color': 'rgb(102, 102, 102)',
 				'color': 'rgba(255, 255, 128, 0.95)'
 			});
+			age_value = target.innerText;
 		}
     });
 	
@@ -47,7 +52,7 @@ var main = function() {
 				'background-color': 'rgba(255, 255, 128, 0.95)',
 				'color': 'black'
 			});
-
+			occupation_value = target.innerText;
 		}
 		else {
 			$('.container-occupation .option').css({
@@ -59,6 +64,7 @@ var main = function() {
 				'background-color': 'rgb(102, 102, 102)',
 				'color': 'rgba(255, 255, 128, 0.95)'
 			});
+			occupation_value = target.innerText;
 		}
     });
 	
@@ -74,6 +80,7 @@ var main = function() {
 				'background-color': 'rgba(255, 255, 128, 0.95)',
 				'color': 'black'
 			});
+			gender_value = target.innerText;
 		}
 		else {
 			$('.container-gender .option').css({
@@ -85,6 +92,7 @@ var main = function() {
 				'background-color': 'rgb(102, 102, 102)',
 				'color': 'rgba(255, 255, 128, 0.95)'
 			});
+			gender_value = target.innerText;
 		}
     });
 	
@@ -94,6 +102,27 @@ var main = function() {
 			setTimeout(function() {
 				info_incomplete();
 			}, 2000);
+		} else {
+			$.ajax({
+		      url: "submit",
+		      type: "POST",
+		      dataType : "text",
+		      data : { age: age_value,
+		               occupation: occupation_value,
+		               gender: gender_value
+		             },
+		      success: function( data ) {
+		        if (data == 'OK') {
+		          console.log("Get your survey");
+		        }
+		        else {
+		          
+		        }
+		      },
+		      error: function(){
+		        console.log("There is an error in survey");
+		      }
+		    });
 		}
     });
 }

@@ -22,11 +22,11 @@ var main = function() {
       $('.toggle-button').animate({top: "-=74px"}, 200);
       opened = false;
     }else if (signup){
-		$('.signup-container').animate({top: "-=95%"}, 400);
-		$('.body').css({'-webkit-filter': 'blur(5px)'});
-		$('.nav').css({'-webkit-filter': 'blur(0px)'});
-		$('.toggle-button').css({'-webkit-filter': 'blur(0px)'});
-		$('.header').css({'-webkit-filter': 'blur(0px)'});
+  		$('.signup-container').animate({top: "-=95%"}, 400);
+  		$('.body').css({'-webkit-filter': 'blur(5px)'});
+  		$('.nav').css({'-webkit-filter': 'blur(0px)'});
+  		$('.toggle-button').css({'-webkit-filter': 'blur(0px)'});
+  		$('.header').css({'-webkit-filter': 'blur(0px)'});
 		signup = false;
 		}
     });
@@ -34,10 +34,10 @@ var main = function() {
 	$('.signup').click(function(){
     if (!signup){
       $('.signup-container').animate({top: "95%"}, 400);
-	  $('.body').css({'-webkit-filter': 'blur(15px)'});
-	  $('.nav').css({'-webkit-filter': 'blur(15px)'});
-	  $('.toggle-button').css({'-webkit-filter': 'blur(15px)'});
-	  $('.header').css({'-webkit-filter': 'blur(15px)'});
+  	  $('.body').css({'-webkit-filter': 'blur(15px)'});
+  	  $('.nav').css({'-webkit-filter': 'blur(15px)'});
+  	  $('.toggle-button').css({'-webkit-filter': 'blur(15px)'});
+  	  $('.header').css({'-webkit-filter': 'blur(15px)'});
 		}
     });
 	
@@ -105,19 +105,15 @@ function redirectTo(){
       dataType : "text",
       data : { username: $("#username").val(),
                password: $("#password").val()
-               //profile: $("#Sign-up-Profile").val()
              },
       success: function( data ) {
-        //console.log("You received some data!", data);
         if (data == 'OK') {
           console.log("user created Yeah!");
-          //success then create cookie
 		      setCookie();
           redirectTo();
         }
         else {
-          console.log(data);
-          $("#information").html(data);
+          
         }
       },
       error: function(){
@@ -133,15 +129,10 @@ function redirectTo(){
       type: "GET",
       dataType : "json",
       success: function( data ) {
-        //console.log("You received some data!");
         if (data.username) {
           console.log("Success: login");
 		      setCookieLogin();
-		      //console.log(data.username);
-          // xhttp.open("GET", "http://localhost:3000/users/login", true);
-          // xhttp.send();
           redirectTo();
-          //window.location.href = "survey.html";
         }
         else if (data.error){
           $("#information").html("Error: " + data.error);
