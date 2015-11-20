@@ -70,6 +70,24 @@ module.exports = {
 		});
 	},
 
+	insertGenInfo: function(name, age, gender, occupation)
+	{
+		var query = "INSERT INTO gen_info (username, age, gender, occupation) VALUE (?, ?, ?, ?)";
+		connection.query(query, [name, age, gender, occupation], function (error, results, fields){});
+	},
+
+	checkGenInfo: function(name, callback)
+	{
+		var query = "SELECT username FROM gen_info WHERE username = ?";
+		connection.query(query, [name], function (error, results, fields){
+			if (results.length > 0){
+				callback("exists");
+			} else{
+				callback("notExists");
+			}
+		});
+	}
+
 	// updateUserData: function(oldname, newname, newpwd)
 	// {
 	// 	var updateQuery = "UPDATE users SET username = ?, password = ? WHERE username = ?";
