@@ -130,7 +130,6 @@ function redirectTo(){
       dataType : "json",
       success: function( data ) {
         if (data.username) {
-          console.log("Success: login");
 		      setCookieLogin();
           redirectTo();
         }
