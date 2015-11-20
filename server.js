@@ -83,7 +83,7 @@ app.get('/users/login', function (req, res){
       if (msg == "exists"){
         //send the third page
         console.log("send geninfo page");
-        res.send({redirect: '/geninfo.html'});
+        res.send({redirect: '/Votee.html'});
       }else {
         console.log("send survey page");
         res.send({redirect:'/survey.html'});
