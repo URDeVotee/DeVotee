@@ -15,6 +15,8 @@ function infoquery(){
     	dataType: "json",
 
     	success: function(data){
+    		alert(data.username);
+    		alert(data.age);
     		$('.username').innerHTML =data.username;
 	     	$('.age').innerHTML =data.age;
 	     	$('.occupation').innerHTML =data.occupation;
