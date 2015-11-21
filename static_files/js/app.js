@@ -51,8 +51,9 @@ var main = function() {
 	
 function checkCookie() {
     if (document.cookie != null && document.cookie != "") {
-		var info = document.cookie.split("/");
-       $.ajax({
+		var info = document.cookie.split(";");
+    info = info[0].split("/");
+    $.ajax({
 		  url: "users/checklogin/",
 		  type: "POST",
 		  dataType : "json",
@@ -77,11 +78,21 @@ function checkCookie() {
 }
 
 function setCookie() {
-	document.cookie = $("#username").val()+"/"+$("#password").val();
+  var now = new Date();
+  var time = now.getTime();
+  var expireTime = time + 1000*30;
+  now.setTime(expireTime);
+  var tempExp = 'Wed, 31 Oct 2012 08:50:17 GMT';
+	document.cookie = $("#username").val()+"/"+$("#password").val()+';expires='+now.toGMTString()+';path=/';
 }
 
 function setCookieLogin() {
-	document.cookie = $("#username-log-in").val()+"/"+$("#password-log-in").val();
+  var now = new Date();
+  var time = now.getTime();
+  var expireTime = time + 1000*30;
+  now.setTime(expireTime);
+  var tempExp = 'Wed, 31 Oct 2012 08:50:17 GMT';
+	document.cookie = $("#username-log-in").val()+"/"+$("#password-log-in").val()+';expires='+now.toGMTString()+';path=/';
 }
 
 function redirectTo(){
