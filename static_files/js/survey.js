@@ -135,8 +135,10 @@ var main = function() {
 		    dataType: "json",
 
 		    success: function(data){
-		      if (typeof data.redirect == 'string')
+		      if (typeof data.redirect == 'string'){
+		      	document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
 		        window.location = data.redirect;
+		    }
 		      else
 		        console.log("not a string");
 		    },
