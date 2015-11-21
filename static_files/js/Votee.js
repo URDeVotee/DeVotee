@@ -15,11 +15,10 @@ function infoquery(){
     	dataType: "json",
 
     	success: function(data){
-    		console.log(data.username);
-    		$('.username').innerHTML=data.username;
-	     	$('.age').innerHTML =data.age;
-	     	$('.occupation').innerHTML =data.occupation;
-	     	$('.gender').innerHTML =data.gender;
+    		$(".username p").html(data.username);
+	     	$(".age p").html(data.age);
+	     	$(".occupation p").html(data.occupation);
+	     	$(".gender p").html(data.gender);
 	    },
 	    error: function(){
 	      console.log("direction error");
