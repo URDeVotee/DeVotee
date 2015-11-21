@@ -116,7 +116,7 @@ function redirectTo(){
           redirectTo();
         }
         else {
-          
+          alert(data);
         }
       },
       error: function(){
@@ -140,7 +140,7 @@ function redirectTo(){
           redirectTo();
         }
         else if (data.error){
-          $("#information").html("Error: " + data.error);
+          alert(data.error);
           console.log("Error: ", data.error);
         }
       },
