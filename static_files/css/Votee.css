@@ -44,7 +44,7 @@
 }
 
 .profile{
-	margin-top: 140px;
+	margin-top: 120px;
 	position: absolute;
 	margin-left: 15%;
 	border: 10px solid rgba(51, 51, 255, 1);
@@ -62,7 +62,7 @@
 }
 
 .namecard {
-	margin-top: 140px;
+	margin-top: 120px;
 	position: absolute;
 	width: 425px;
 	height:250px;
@@ -132,4 +132,28 @@
 	text-align:center;
 	font-family: 'UnifrakturMaguntia', cursive;
 	font-size:28px;
+}
+
+#underline-votee {
+	font-family: 'Pacifico', cursive;
+}
+
+.plot #container {
+	width: 600px; 
+	height: 300px; 
+	margin: 0 auto;
+}
+
+.plot .plotbackground {
+	position: absolute;
+	background-color: rgba(140, 140, 140, 0.6);
+	-webkit-filter: blur(3px);
+	width: 100%;
+	height: 100%;
+}
+
+.plot{
+	position: absolute;
+	margin-left: 400px;
+	margin-top: 400px;
 }
