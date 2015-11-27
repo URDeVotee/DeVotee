@@ -12,7 +12,7 @@
 	opacity: 0.8;
 	z-index: -1;
 	opacity: 0.8;
-	-webkit-filter: blur(0px);
+	-webkit-filter: blur(1.5px);
 }
 
 .upcover {
@@ -22,7 +22,7 @@
 	left:0;
 	right:0;
 	width:100%;
-	height:9%;
+	height:6%;
 	opacity: 0.6;
 	background-color:rgba(0, 0, 255, 0.99);
 	-webkit-filter: blur(0px);
@@ -36,9 +36,100 @@
 	left:0;
 	right:0;
 	width:100%;
-	height:16%;
+	height:5%;
 	opacity: 0.6;
 	background-color:rgba(255, 0, 0, 0.99);
 	-webkit-filter: blur(0px);
 	z-index:2;
+}
+
+.profile{
+	margin-top: 140px;
+	position: absolute;
+	margin-left: 15%;
+	border: 10px solid rgba(51, 51, 255, 1);
+	border-radius: 90px;
+	overflow:hidden;
+}
+
+.profile .container {
+	width: 250px;
+	height:250px;
+	background-image: url("../image/Hillary.jpg");
+	background-size: cover;
+	background-color: black;
+	z-index:2;
+}
+
+.namecard {
+	margin-top: 140px;
+	position: absolute;
+	width: 425px;
+	height:250px;
+	background-color:rgb(255, 255, 204);
+	margin-left: 800px;
+	border: 3px solid rgba(179, 179, 179, 0.5);
+	border-radius: 1px;
+	box-shadow: -3px 4px 2px 0px rgba(89, 89, 89,0.6);
+}
+
+.namecard_background {
+	background-image: url("../image/demlogo.png");
+	background-position: center; 
+	background-repeat: no-repeat;
+	width:100%;
+	height:100%;
+	position: absolute;
+	opacity: 0.2;
+}
+
+#name {
+	font-family: Sans-serif;
+	text-align: center;
+	font-size: 1.5em;
+	margin-top: 5px;
+}
+
+#campaign_target {
+	font-family: Sans-serif;
+	text-align: center;
+	font-size: 1em;
+	margin-top: -15px;
+	font-weight: bold;
+}
+
+#namecard_underline {
+	width:100%;
+	background:rgba(0, 0, 0, 0.8);
+	height:3px;
+	margin-top: -2px;
+}
+
+#info1 {
+	font-family: Sans-serif;
+	text-align: center;
+	font-size: 1.5em;
+	margin-top: 20px;
+}
+
+#info2 {
+	font-family: Sans-serif;
+	text-align: center;
+	font-size: 1.5em;
+	margin-top: 20px;
+}
+
+#underline2 {
+	margin-top:20px;
+	width:100%;
+	background:black;
+	height:40px;
+}
+
+#underline-logo {
+	cursor:default;
+	color:rgb(255, 255, 204);
+	text-align:center;
+	font-family: 'UnifrakturMaguntia', cursive;
+	font-size:28px;
 }
