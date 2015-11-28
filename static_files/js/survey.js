@@ -7,6 +7,221 @@ var occupation_value="";
 var gender_value="";
 var flip=false;
 
+var abortion = {
+    head:"ABORTION",
+    detail:"Unrestricted Right",
+    age_weight:1,
+    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:2,
+    occupation:["UNEMPLOYED","STUDENT","BLUE-COLLAR","WHITE-COLLAR","RETIRED"],
+    gender_weight:3,
+    gender:["FEMALE"],
+    score:0
+};
+
+var female_employee = {
+    head:"FEMALE EMPLOYEE",
+    detail:"Legally Require More",
+    age_weight:1,
+    age:["YOUNG ADULT","ADULT","MIDDLE AGE"],
+    occupation_weight:2,
+    occupation:["UNEMPLOYED","STUDENT","BLUE-COLLAR","WHITE-COLLAR"],
+    gender_weight:3,
+    gender:["FEMALE"]
+};
+
+var same_sex_marriage = {
+	head:"SAME-SEX MARRIAGE",
+    detail:"Legal and Natrual",
+    age_weight:3,
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:2,
+    occupation:["STUDENT","BLUE-COLLAR","WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var god = {
+	head:"GOD",
+	detail:"in the Public Sphere",
+	age_weight:3,
+    age:["MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:2,
+    occupation:["WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var epa_regulation = {
+	head:"EPA REGULATION",
+	detail:"Too Restrictive",
+	age_weight:2,
+    age:["YOUNG ADULT","ADULT"],
+    occupation_weight:3,
+    occupation:["STUDENT","ENTREPRENEUR"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var crime = {
+	head:"CRIME",
+	detail:"Stricter Punishment",
+	age_weight:3,
+    age:["MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:2,
+    occupation:["UNEMPLOYED","STUDENT","BLUE-COLLAR","WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var gun = {
+	head:"GUN OWNERSHIP",
+	detail:"ABSOLUTE RIGHT",
+	age_weight:3,
+    age:["ADULT","MIDDLE AGE"],
+    occupation_weight:1,
+    occupation:["BLUE-COLLAR","WHITE-COLLAR"],
+    gender_weight:2,
+    gender:["MALE"],
+    score:0
+}
+
+var obamacare = {
+	head:"OBAMACARE",
+	detail:"EXPAND",
+	age_weight:2,
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:3,
+    occupation:["UNEMPLOYED","BLUE-COLLAR","WHITE-COLLAR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var green_energy = {
+	head:"GREEN ENERGY",
+	detail:"Prioritize",
+	age_weight:2,
+    age:["YOUNG ADULT","ADULT"],
+    occupation_weight:3,
+    occupation:["STUDENT","ENTREPRENEUR"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var marijuana = {
+	head:"MARIJUANA",
+	detail:"Gateway Drug",
+	age_weight:2,
+    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:3,
+    occupation:["STUDENT","WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var stimulus = {
+	head:"STIMULUS",
+	detail:"Better than Market-Led",
+	age_weight:2,
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:3,
+    occupation:["UNEMPLOYED","BLUE-COLLAR","WHITE-COLLAR","MANAGER","ENTREPRENEUR"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var wealthy_tax = {
+	head:"WEALTHT TAX",
+	detail:"Higher",
+	age_weight:2,
+    age:["ADULT","MIDDLE AGE"],
+    occupation_weight:3,
+    occupation:["UNEMPLOYED","BLUE-COLLAR","WHITE-COLLAR","MANAGER","ENTREPRENEUR"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var illegal_aliens = {
+	head:"ILLEGAL ALLIENS",
+	detail:"Pathway to Citizenship",
+	age_weight:3,
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:2,
+    occupation:["UNEMPLOYED","BLUE-COLLAR","MANAGER","ENTREPRENEUR"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var social_security = {
+	head:"SOCIAL SECURITY FUND",
+	detail:"Privatize",
+	age_weight:3,
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:2,
+    occupation:["UNEMPLOYED","BLUE-COLLAR","MANAGER","ENTREPRENEUR"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var free_trade = {
+	head:"FREE TRADE",
+	detail:"Support & Expand",
+	age_weight:2,
+    age:["ADULT","MIDDLE AGE"],
+    occupation_weight:3,
+    occupation:["UNEMPLOYED","BLUE-COLLAR","MANAGER","ENTREPRENEUR"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var military = {
+	head:"MILITARY",
+	detail:"Expand",
+	age_weight:2,
+    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:3,
+    occupation:["WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var american_exceptionalism = {
+	head:"AMERICAN EXCEPTIONALISM",
+	detail:"SUPPORT",
+	age_weight:2,
+    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:3,
+    occupation:["UNEMPLOYED","BLUE-COLLAR","WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
+var foreign_entanglements = {
+	head:"FOREIGN ENTANGLEMENTS",
+	detail:"Avoid",
+	age_weight:2,
+    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    occupation_weight:3,
+    occupation:["WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    gender_weight:1,
+    gender:["MALE","FEMALE"],
+    score:0
+}
+
 var main = function() {
 	
 	// setTimeout(function() {
@@ -163,13 +378,13 @@ var main = function() {
 		var val = target.value;
 		//alert(attitude);
 		if (val<=0){
-			var red = val/(-50)*230;
-			var green = (50-(-val))/50*230;
+			var red = val/(-50)*240;
+			var green = (50-(-val))/50*240;
 			var blue = 0;
 		}else {
 			var red = 0;
-			var green = (50-val)/50*230;
-			var blue = val/(50)*230;
+			var green = (50-val)/50*240;
+			var blue = val/(50)*240;
 		}
 		var text = $(this).parents('.below').children('.text')
 		switch (true) {
