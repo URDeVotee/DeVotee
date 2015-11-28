@@ -6,6 +6,7 @@ var age_value="";
 var occupation_value="";
 var gender_value="";
 var flip=false;
+var result = [];
 
 var abortion = {
     head:"ABORTION",
@@ -190,7 +191,7 @@ var military = {
 	head:"MILITARY",
 	detail:"Expand",
 	age_weight:2,
-    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
     occupation_weight:3,
     occupation:["WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
     gender_weight:1,
@@ -202,9 +203,9 @@ var american_exceptionalism = {
 	head:"AMERICAN EXCEPTIONAL",
 	detail:"SUPPORT",
 	age_weight:2,
-    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
     occupation_weight:3,
-    occupation:["UNEMPLOYED","BLUE-COLLAR","WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
+    occupation:["BLUE-COLLAR","WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
     gender_weight:1,
     gender:["MALE","FEMALE"],
     score:0
@@ -214,7 +215,7 @@ var foreign_entanglements = {
 	head:"FOREIGN ENTANGLE",
 	detail:"Avoid",
 	age_weight:2,
-    age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
+    age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
     occupation_weight:3,
     occupation:["WHITE-COLLAR","MANAGER","ENTREPRENEUR","RETIRED"],
     gender_weight:1,
@@ -315,6 +316,9 @@ var main = function() {
 		}
     });
 	
+	$('.detail').fadeOut(300);
+	$('.submit').fadeOut(0);
+
 	$('#submit').click(function(event){
 		info_flyout();
 		if (!(age_select&&occupation_select&&gender_select)){
@@ -322,18 +326,22 @@ var main = function() {
 				info_incomplete();
 			}, 2000);
 		} else {
-			priority(age_value,occupation_value,gender_value);
-			appendtopic();
-			$('.above').hover(function(e){
-				currentElement = $(e.currentTarget);
-				currentElement.fadeOut(300);
-			});
+			setTimeout(function() {
+				priority(age_value,occupation_value,gender_value);
+				appendtopic();
+				$('.above').hover(function(e){
+					currentElement = $(e.currentTarget);
+					currentElement.fadeOut(300);
+				});
 
-			$('.below').mouseleave(function(){
-				$('.above').fadeIn(300);
-			});
+				$('.below').mouseleave(function(){
+					$('.above').fadeIn(300);
+				});
 
-			drag();
+				drag();
+				$('.detail').fadeIn(1000);
+				$('.submit').fadeIn(1000);
+			}, 2000);
 		}
     });
 
@@ -357,6 +365,9 @@ var main = function() {
 		});
     })
 
+    $('.submit').click(function(event){
+    	upload();
+    })
 }
 
 
@@ -463,6 +474,14 @@ function drag(){
 	});
 }
 
-
+function upload(){
+	var topicname = $(".above h1");
+	var topicattitude = document.getElementsByClassName("attitude-range");
+	for (var i = 0; i < 8; i++){
+		result.push([topicname[i].innerHTML,topicattitude[i].value]);
+	}
+	console.log(result[1][0]);
+	console.log(result[1][1]);
+}
 
 $(document).ready(main);
