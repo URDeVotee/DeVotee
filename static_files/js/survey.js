@@ -5,12 +5,13 @@ var gender_select = false;
 var age_value="";
 var occupation_value="";
 var gender_value="";
+var flip=false;
 
 var main = function() {
 	
-	setTimeout(function() {
-		info_flyin();
-	}, 1500);
+	// setTimeout(function() {
+	// 	info_flyin();
+	// }, 1500);
 	
 	$('.container-age .option').click(function(event){
 		if (!age_select) {
@@ -147,6 +148,42 @@ var main = function() {
 		    }
 		});
     })
+
+    $('.above').hover(function(e){
+		currentElement = $(e.currentTarget);
+		currentElement.fadeOut(300);
+	});
+
+	$('.below').mouseleave(function(){
+		$('.above').fadeIn(300);
+	});
+
+	$('#attitude-range').mousemove(function(event){
+		var target = event.target;
+		var val = target.value;
+		//alert(attitude);
+		if (val<=0){
+			var red = val/(-50)*230;
+			var green = (50-(-val))/50*230;
+			var blue = 0;
+		}else {
+			var red = 0;
+			var green = (50-val)/50*230;
+			var blue = val/(50)*230;
+		}
+		var text = $(this).parents('.below').children('.text')
+		switch (true) {
+			case (-50 <= val &&  val < -30): text.html("Strongly Oppose");break;
+			case (-30 <= val &&  val < -10): text.html("Oppose");break;
+			case (-10 <= val &&  val < 10): text.html("Neutral");break;
+			case (10 <= val &&  val < 30): text.html("Favor");break;
+			case (30 <= val &&  val < 50): text.html("Strongly Favor");break;
+		}
+		$(this).parents('.below').css({
+			'background-color': 'rgb('+red+','+green+','+blue+')'
+		});
+		//alert('rgb('+red+','+green+','+blue+')');
+	});
 }
 
 

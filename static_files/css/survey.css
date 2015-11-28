@@ -5,8 +5,8 @@
 
 ul {
 	list-style-type: none;
+	display: inline-block;
 }
-
 .background {
 	background-image: url("../image/US.PNG");
 	background-size: cover;
@@ -95,7 +95,7 @@ ul {
 }
 
 #underline2 {
-	margin-top:-15px;
+	margin-top:-45px;
 	width:100%;
 	background:black;
 	height:40px;
@@ -119,7 +119,7 @@ ul {
 }
 
 .basic_info ul li div {
-	margin-top:-5px;
+	margin-top:-10px;
 }
 
 .basic_info ul li .button span{
@@ -177,3 +177,54 @@ ul {
 	margin-top: 2px;
 	color:rgba(250, 250, 250, 0.7);
 }
+
+/*attitude*/
+.detail {
+	text-align: center;
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	margin-top: 150px;
+}
+
+.features li{
+	margin-left: 50px;
+	margin-right: 50px;
+	display: inline-block;
+}
+
+.features li .above{
+	position: absolute;
+	height:180px;
+	width: 180px;
+	z-index:1
+	text-align: center;
+	background-color: rgba(255, 255, 128, 1);
+	color: rgb(20, 20, 82);
+	border: 3px solid rgba(230, 230, 230, 0.4);
+	box-shadow: -3px 14px 4px 0px rgba(89, 89, 89,0.6);
+	border-radius: 4px;
+	overflow: hidden;
+	vertical-align: middle;
+	line-height: 180px;
+	font-size: 16px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:bolder;
+}
+
+.features li .below{
+	height:180px;
+	width: 180px;
+	color: rgba(16, 16, 66,1);
+	background-color:rgba(0, 230, 0,1);
+	border: 3px solid rgba(230, 230, 230, 0.4);
+	box-shadow: -3px 4px 2px 0px rgba(89, 89, 89,0.6);
+	border-radius: 4px;
+	overflow: hidden;
+	line-height: 55px;
+	font-size: 16px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:bolder;
+	color: white;
+}
+
