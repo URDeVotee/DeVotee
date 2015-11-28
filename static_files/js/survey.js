@@ -158,7 +158,7 @@ var main = function() {
 		$('.above').fadeIn(300);
 	});
 
-	$('#attitude-range').mousemove(function(event){
+	$('.attitude-range').mousemove(function(event){
 		var target = event.target;
 		var val = target.value;
 		//alert(attitude);
@@ -175,7 +175,7 @@ var main = function() {
 		switch (true) {
 			case (-50 <= val &&  val < -30): text.html("Strongly Oppose");break;
 			case (-30 <= val &&  val < -10): text.html("Oppose");break;
-			case (-10 <= val &&  val < 10): text.html("Neutral");break;
+			case (-10 <= val &&  val < 10): text.html("Neutrual");break;
 			case (10 <= val &&  val < 30): text.html("Favor");break;
 			case (30 <= val &&  val < 50): text.html("Strongly Favor");break;
 		}
