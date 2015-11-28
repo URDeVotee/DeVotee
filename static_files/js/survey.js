@@ -139,7 +139,7 @@ var stimulus = {
 }
 
 var wealthy_tax = {
-	head:"WEALTHT TAX",
+	head:"WEALTHY TAX",
 	detail:"Higher",
 	age_weight:2,
     age:["ADULT","MIDDLE AGE"],
@@ -151,7 +151,7 @@ var wealthy_tax = {
 }
 
 var illegal_aliens = {
-	head:"ILLEGAL ALLIENS",
+	head:"ILLEGAL ALIENS",
 	detail:"Pathway to Citizenship",
 	age_weight:3,
     age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
@@ -163,7 +163,7 @@ var illegal_aliens = {
 }
 
 var social_security = {
-	head:"SOCIAL SECURITY FUND",
+	head:"SOCIAL SECURITY",
 	detail:"Privatize",
 	age_weight:3,
     age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
@@ -199,7 +199,7 @@ var military = {
 }
 
 var american_exceptionalism = {
-	head:"AMERICAN EXCEPTIONALISM",
+	head:"AMERICAN EXCEPTIONAL",
 	detail:"SUPPORT",
 	age_weight:2,
     age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
@@ -211,7 +211,7 @@ var american_exceptionalism = {
 }
 
 var foreign_entanglements = {
-	head:"FOREIGN ENTANGLEMENTS",
+	head:"FOREIGN ENTANGLE",
 	detail:"Avoid",
 	age_weight:2,
     age:["YOUNG ADULT","ADULT","MIDDLE AGE","SENIOR CITIZEN"],
@@ -222,11 +222,14 @@ var foreign_entanglements = {
     score:0
 }
 
+var topics = [abortion, female_employee, same_sex_marriage, god, epa_regulation, crime, gun, obamacare, green_energy, marijuana, stimulus, wealthy_tax,
+illegal_aliens, social_security, free_trade, military, american_exceptionalism, foreign_entanglements];
+
 var main = function() {
 	
-	// setTimeout(function() {
-	// 	info_flyin();
-	// }, 1500);
+	setTimeout(function() {
+		info_flyin();
+	}, 1500);
 	
 	$('.container-age .option').click(function(event){
 		if (!age_select) {
@@ -319,28 +322,18 @@ var main = function() {
 				info_incomplete();
 			}, 2000);
 		} else {
-			$.ajax({
-		      url: "/submit",
-		      type: "POST",
-		      dataType : "text",
-		      data : { age: age_value,
-		               occupation: occupation_value,
-		               gender: gender_value
-		             },
-		      success: function( data ) {
-		        if (data == 'OK') {
-		          setTimeout(function() {
-						portal();
-					}, 1500);
-		        }
-		        else {
-		          
-		        }
-		      },
-		      error: function(){
-		        console.log("There is an error in survey");
-		      }
-		    });
+			priority(age_value,occupation_value,gender_value);
+			appendtopic();
+			$('.above').hover(function(e){
+				currentElement = $(e.currentTarget);
+				currentElement.fadeOut(300);
+			});
+
+			$('.below').mouseleave(function(){
+				$('.above').fadeIn(300);
+			});
+
+			drag();
 		}
     });
 
@@ -364,41 +357,6 @@ var main = function() {
 		});
     })
 
-    $('.above').hover(function(e){
-		currentElement = $(e.currentTarget);
-		currentElement.fadeOut(300);
-	});
-
-	$('.below').mouseleave(function(){
-		$('.above').fadeIn(300);
-	});
-
-	$('.attitude-range').mousemove(function(event){
-		var target = event.target;
-		var val = target.value;
-		//alert(attitude);
-		if (val<=0){
-			var red = val/(-50)*240;
-			var green = (50-(-val))/50*240;
-			var blue = 0;
-		}else {
-			var red = 0;
-			var green = (50-val)/50*240;
-			var blue = val/(50)*240;
-		}
-		var text = $(this).parents('.below').children('.text')
-		switch (true) {
-			case (-50 <= val &&  val < -30): text.html("Strongly Oppose");break;
-			case (-30 <= val &&  val < -10): text.html("Oppose");break;
-			case (-10 <= val &&  val < 10): text.html("Neutrual");break;
-			case (10 <= val &&  val < 30): text.html("Favor");break;
-			case (30 <= val &&  val < 50): text.html("Strongly Favor");break;
-		}
-		$(this).parents('.below').css({
-			'background-color': 'rgb('+red+','+green+','+blue+')'
-		});
-		//alert('rgb('+red+','+green+','+blue+')');
-	});
 }
 
 
@@ -443,5 +401,68 @@ function info_incomplete(){
 function portal(){
 	window.location.href = "Votee.html";
 }
+
+function priority(age,occupation,gender){
+	var arrayLength = topics.length;
+	for (var i = 0; i < arrayLength; i++) {
+		var age_score = 0;
+		var occupation_score = 0;
+		var gender_score = 0;
+	    if ($.inArray(age,topics[i].age)!=-1){
+	    	age_score = topics[i].age_weight;
+	    }
+	    if ($.inArray(occupation,topics[i].occupation)!=-1){
+	    	occupation_score = topics[i].occupation_weight;
+	    }
+	    if ($.inArray(gender,topics[i].gender)!=-1){
+	    	gender_score = topics[i].gender_weight;
+	    }
+	    topics[i].score=age_score+occupation_score+gender_score;
+	    // console.log(topics[i].head);
+	    // console.log(topics[i].score);
+	}
+	topics.sort(function(topic1,topic2){
+		if(topic1.score>topic2.score){
+			return -1;
+		} else return 1;
+	});
+}
+
+function appendtopic(){
+	for (var i = 0; i < 8; i++) {
+		$(".topics").append('<li><div class="above"><h1>'+topics[i].head+'</h1><p>'+topics[i].detail+'</p></div><div class="below abortion"><p class="text">Neutrual</p><div class="attitude"><div class="range"><input class="attitude-range" type="range" min="-50" max="50"></div></div></div></li>');
+	}
+}
+
+function drag(){
+	$('.attitude-range').mousemove(function(event){
+		var target = event.target;
+		var val = target.value;
+		//alert(attitude);
+		if (val<=0){
+			var red = val/(-50)*240;
+			var green = (50-(-val))/50*240;
+			var blue = 0;
+		}else {
+			var red = 0;
+			var green = (50-val)/50*240;
+			var blue = val/(50)*240;
+		}
+		var text = $(this).parents('.below').children('.text')
+		switch (true) {
+			case (-50 <= val &&  val < -30): text.html("Strongly Oppose");break;
+			case (-30 <= val &&  val < -10): text.html("Oppose");break;
+			case (-10 <= val &&  val < 10): text.html("Neutrual");break;
+			case (10 <= val &&  val < 30): text.html("Favor");break;
+			case (30 <= val &&  val < 50): text.html("Strongly Favor");break;
+		}
+		$(this).parents('.below').css({
+			'background-color': 'rgb('+red+','+green+','+blue+')'
+		});
+		//alert('rgb('+red+','+green+','+blue+')');
+	});
+}
+
+
 
 $(document).ready(main);

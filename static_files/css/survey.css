@@ -184,16 +184,17 @@ ul {
 	display: inline-block;
 	width: 100%;
 	position: absolute;
-	margin-top: 150px;
+	margin-top: 100px;
 }
 
-.features li{
+.topics li{
 	margin-left: 50px;
 	margin-right: 50px;
 	display: inline-block;
+	margin-top: 50px;
 }
 
-.features li .above{
+.topics li .above{
 	position: absolute;
 	height:180px;
 	width: 180px;
@@ -212,7 +213,7 @@ ul {
 	font-weight:bolder;
 }
 
-.features li .below{
+.topics li .below{
 	height:180px;
 	width: 180px;
 	color: rgba(16, 16, 66,1);
@@ -227,4 +228,7 @@ ul {
 	font-weight:bolder;
 	color: white;
 }
+
+.topics li .below p{
+	font-size: 20px;}
 
