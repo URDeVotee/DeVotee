@@ -341,6 +341,7 @@ var main = function() {
 				drag();
 				$('.detail').fadeIn(1000);
 				$('.submit').fadeIn(1000);
+				$('.background').css({'-webkit-filter': 'blur(1px)'});
 			}, 2000);
 		}
     });
@@ -367,13 +368,31 @@ var main = function() {
 
     $('.submit').click(function(event){
     	upload();
+    	$.ajax({
+		    url: "/vote/submit",
+		    type: "GET",
+		    dataType: "json",
+		    data: { 
+		    	data: result
+	        },
+
+		    success: function(data){
+		      console.log(data);
+		    },
+		    error: function(){
+		      console.log("No Candidate");
+		    }
+		});
     })
 }
 
+function vague(){
+	$('.background').css({'-webkit-filter': 'blur(2px)'});
+}
 
 function info_flyin(){
 	$('.basic_info_ticket').animate({top: "1%"}, 1000);
-	$('.background').css({'-webkit-filter': 'blur(1px)'});
+	$('.background').css({'-webkit-filter': 'blur(2px)'});
 }
 
 function info_flyout(){
@@ -480,8 +499,6 @@ function upload(){
 	for (var i = 0; i < 8; i++){
 		result.push([topicname[i].innerHTML,topicattitude[i].value]);
 	}
-	console.log(result[1][0]);
-	console.log(result[1][1]);
 }
 
 $(document).ready(main);
