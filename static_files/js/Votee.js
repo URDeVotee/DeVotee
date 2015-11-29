@@ -3,7 +3,7 @@ var chartinfo;
 var main = function() {
 	infoquery();
 
-	$('.ReVote').click(function() {
+	$('.revote').click(function() {
 		window.location.href = "survey.html";
 	});
 
@@ -37,6 +37,7 @@ function infoquery(){
     	success: function(data){
     		chartinfo = data;
             basicinfo();
+            chart();
 	    },
 
 	    error: function(){
@@ -88,81 +89,92 @@ function basicinfo(){
     $(".namecard .container").append('<p id="info2">'+chartinfo.position+'</p>');
 }
 
+function chart(){
+    var array = charinfo.score;
+    var arrayLength = charinfo.score.length;
+    var topic = [];
+    var candidateattitude = [];
+    var userattitude = [];
+    for (var i = 0; i < arrayLength; i++) {
+        topic.push(array[i][0]);
+        candidateattitude.push(array[i][1]);
+        userattitude.push(array[i][2]);
+    }
 
-$(function () {
+    $(function () {
+        $('#container').highcharts({
 
-    $('#container').highcharts({
+            chart: {
+                polar: true,
+                type: 'line',
+                backgroundColor: null,
+                plotBorderColor: '#606063'
+            },
 
-        chart: {
-            polar: true,
-            type: 'line',
-            backgroundColor: null,
-            plotBorderColor: '#606063'
-        },
+            title: {
+                text: '',
+                x: -80
+            },
 
-        title: {
-            text: '',
-            x: -80
-        },
+            pane: {
+                size: '80%'
+            },
 
-        pane: {
-            size: '80%'
-        },
+            xAxis: {
+                categories: topic,
+                tickmarkPlacement: 'on',
+                lineColor: 'rgb(0, 0, 0)',
+                labels: {
+                     style: {
+                        fontSize: '12px',
+                        color: 'black'
+                     }
+                  },
+                minorGridLineColor: 'gb(0, 0, 0)',
+                lineWidth: 0
 
-        xAxis: {
-            categories: ['Abortion', 'Gun Control', 'Military', 'Customer Support',
-                    'Religion', 'Obamacare'],
-            tickmarkPlacement: 'on',
-            lineColor: 'rgb(0, 0, 0)',
-            labels: {
-		         style: {
-		            fontSize: '12px',
-		            color: 'black'
-		         }
-		      },
-            minorGridLineColor: 'gb(0, 0, 0)',
-            lineWidth: 0
+            },
 
-        },
+            yAxis: {
+                gridLineInterpolation: 'polygon',
+                lineWidth: 0,
+                lineColor: 'rgb(0, 0, 0)',
+                labels: {
+                     style: {
+                        fontSize: '12px',
+                        color: 'black'
+                     }
+                  },
+                minorGridLineColor: 'gb(0, 0, 0)',
+                min: 0
+            },
 
-        yAxis: {
-            gridLineInterpolation: 'polygon',
-            lineWidth: 0,
-            lineColor: 'rgb(0, 0, 0)',
-            labels: {
-		         style: {
-		            fontSize: '12px',
-		            color: 'black'
-		         }
-		      },
-            minorGridLineColor: 'gb(0, 0, 0)',
-            min: 0
-        },
+            tooltip: {
+                shared: true,
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+            },
 
-        tooltip: {
-            shared: true,
-            pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
-        },
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                y: 70,
+                layout: 'vertical'
+            },
 
-        legend: {
-            align: 'right',
-            verticalAlign: 'top',
-            y: 70,
-            layout: 'vertical'
-        },
+            series: [{
+                name: 'You',
+                data: userattitude,
+                pointPlacement: 'on'
+            }, {
+                name: "Candidate",
+                data: candidateattitude,
+                pointPlacement: 'on'
+            }]
 
-        series: [{
-            name: 'You',
-            data: [2,1,0,1,0,2],
-            pointPlacement: 'on'
-        }, {
-            name: "Candidate",
-            data: [1.5,1,0.2,1.1,0.3,1],
-            pointPlacement: 'on'
-        }]
-
+        });
     });
-});
+}
+
 
 
 
