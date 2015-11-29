@@ -370,14 +370,16 @@ var main = function() {
     	upload();
     	$.ajax({
 		    url: "/vote/submit",
-		    type: "GET",
+		    type: "POST",
 		    dataType: "json",
 		    data: { 
 		    	data: result
 	        },
 
 		    success: function(data){
-		      console.log(data);
+		      if (typeof data.redirect == 'string'){
+		      	document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
+		        window.location = data.redirect;
 		    },
 		    error: function(){
 		      console.log("No Candidate");
