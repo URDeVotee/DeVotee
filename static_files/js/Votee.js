@@ -98,19 +98,8 @@ function chart(){
     var userattitude = [];
     for (var i = 0; i < arrayLength; i++) {
         topic.push(array[i][0]);
-        if(array[i][1]<0)
-        {
-            candidateattitude.push(-array[i][1]);
-        } else {
-            candidateattitude.push(array[i][1]+50);
-        }
-
-        if(array[i][1]<0)
-        {
-            userattitude.push(-parseInt(-array[i][2]));
-        } else {
-            userattitude.push(50+parseInt(array[i][2]));
-        }
+        candidateattitude.push(array[i][1]+50);
+        userattitude.push(50+parseInt(array[i][2]));
     }
 
     $(function () {
