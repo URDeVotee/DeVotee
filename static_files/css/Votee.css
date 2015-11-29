@@ -2,6 +2,8 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 @import url(https://fonts.googleapis.com/css?family=Pacifico|UnifrakturMaguntia);
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Anton);
+@import url(https://fonts.googleapis.com/css?family=Patua+One);
 
 .background {
 	background-image: url("../image/Seal.PNG");
@@ -44,10 +46,9 @@
 }
 
 .profile{
-	margin-top: 120px;
+	margin-top: 60px;
 	position: absolute;
-	margin-left: 15%;
-	border: 10px solid rgba(51, 51, 255, 1);
+	margin-left: 200px;
 	border-radius: 90px;
 	overflow:hidden;
 }
@@ -55,23 +56,23 @@
 .profile .container {
 	width: 250px;
 	height:250px;
+
 	z-index:2;
 }
 
 .namecard {
-	margin-top: 120px;
+	margin-top: 350px;
 	position: absolute;
 	width: 425px;
 	height:250px;
 	background-color:rgb(255, 255, 204);
-	margin-left: 800px;
+	margin-left: 130px;
 	border: 3px solid rgba(179, 179, 179, 0.5);
 	border-radius: 1px;
 	box-shadow: -3px 4px 2px 0px rgba(89, 89, 89,0.6);
 }
 
 .namecard_background {
-	background-image: url("../image/demlogo.png");
 	background-position: center; 
 	background-repeat: no-repeat;
 	width:100%;
@@ -81,17 +82,17 @@
 }
 
 #name {
-	font-family: Sans-serif;
+	font-family: 'Patua One', cursive;
 	text-align: center;
-	font-size: 1.5em;
+	font-size: 2em;
 	margin-top: 5px;
 }
 
 #campaign_target {
-	font-family: Sans-serif;
+	font-family: 'Patua One', cursive;
 	text-align: center;
 	font-size: 1em;
-	margin-top: -15px;
+	margin-top: -25px;
 	font-weight: bold;
 }
 
@@ -103,21 +104,21 @@
 }
 
 #info1 {
-	font-family: Sans-serif;
+	font-family: 'Patua One', cursive;
 	text-align: center;
-	font-size: 1.5em;
-	margin-top: 20px;
+	font-size: 1em;
+	margin-top: 12px;
 }
 
 #info2 {
-	font-family: Sans-serif;
+	font-family: 'Patua One', cursive;
 	text-align: center;
-	font-size: 1.5em;
-	margin-top: 20px;
+	font-size: 2.5em;
+	margin-top: -5px;
 }
 
 #underline2 {
-	margin-top:20px;
+	margin-top:-30px;
 	width:100%;
 	background:black;
 	height:40px;
@@ -135,25 +136,23 @@
 	font-family: 'Pacifico', cursive;
 }
 
+.plot{
+	position: absolute;
+	margin-left: 640px;
+	margin-top: 120px;
+}
+
 .plot #container {
-	width: 600px; 
-	height: 300px; 
+	width: 750px; 
+	height: 450px; 
 	margin: 0 auto;
 }
 
 .plot .plotbackground {
 	position: absolute;
-	background-color: rgba(140, 140, 140, 0.6);
-	-webkit-filter: blur(3px);
+	-webkit-filter: blur(1.5px);
 	width: 100%;
 	height: 100%;
-}
-
-.plot{
-	
-	position: absolute;
-	margin-left: 400px;
-	margin-top: 400px;
 }
 
 .revote {

@@ -48,8 +48,13 @@ function infoquery(){
 }
 
 function basicinfo(){
-    $(".profile").css({
-            'background-image': 'url("../image/'+chartinfo.name+'.jpg"',
+    var name = chartinfo.name.split(" ");
+    name[0]=name[0].toLowerCase();
+    name[1]=name[1].toLowerCase();
+    name = name[0]+"_"+name[1];
+
+    $("#candidate_photo").css({
+            'background-image': "url(../image/"+name+".jpg)",
             'background-size': 'cover'
         });
 
@@ -58,14 +63,14 @@ function basicinfo(){
             'background-image': 'url("../image/replogo.png")'
         });
         $(".profile").css({
-            'border': '10px solid rgba(51, 51, 255, 1)'
+            'border': '10px solid rgba(255, 51, 51, 1)'
         });
     } else if (chartinfo.party=="Democratic"){
         $(".namecard_background").css({
             'background-image': 'url("../image/demlogo.png")'
         });
         $(".profile").css({
-            'border': '10px solid rgba(255, 51, 51, 1)'
+            'border': '10px solid rgba(51, 51, 255, 1)'
         });
     } else if (chartinfo.party=="Green"){
         $(".namecard_background").css({
@@ -83,7 +88,7 @@ function basicinfo(){
         });
     }
 
-    $(".namecard .container").append('<p id="name">'+chartinfo.name+'</p>');
+    $(".namecard .container").append('<p id="name" font-family="Sans-serif">'+chartinfo.name+'</p>');
     $(".namecard .container").append('<p id="campaign_target">For President</p>');
     $(".namecard .container").append('<div id="namecard_underline"></div>');
     $(".namecard .container").append('<p id="info1">'+chartinfo.party+'</p>');
@@ -109,7 +114,7 @@ function chart(){
                 polar: true,
                 type: 'line',
                 backgroundColor: null,
-                plotBorderColor: '#606063'
+                plotBorderColor: 'rgb(0, 0, 0)'
             },
 
             title: {
@@ -152,7 +157,7 @@ function chart(){
 
             tooltip: {
                 shared: true,
-                pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
             },
 
             legend: {
