@@ -102,12 +102,12 @@ function chart(){
         {
             candidateattitude.push(-array[i][1]);
         } else {
-            candidateattitude.push(-array[i][1]+50);
+            candidateattitude.push(array[i][1]+50);
         }
 
         if(array[i][1]<0)
         {
-            userattitude.push(-parseInt(array[i][2]));
+            userattitude.push(-parseInt(-array[i][2]));
         } else {
             userattitude.push(50+parseInt(array[i][2]));
         }
