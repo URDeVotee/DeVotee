@@ -99,7 +99,8 @@ function chart(){
     for (var i = 0; i < arrayLength; i++) {
         topic.push(array[i][0]);
         candidateattitude.push(array[i][1]);
-        userattitude.push(array[i][2]);
+        console.log(array[i][2]);
+        userattitude.push(parseInt(array[i][2]));
     }
 
     $(function () {
