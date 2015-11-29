@@ -1,5 +1,5 @@
-//@Version 0.1
-
+//@Version 0.5
+var chartinfo;
 var main = function() {
 	infoquery();
 
@@ -35,17 +35,56 @@ function infoquery(){
     	dataType: "json",
 
     	success: function(data){
-    		$(".username p").html(data.username);
-	     	$(".age p").html(data.age);
-	     	$(".occupation p").html(data.occupation);
-	     	$(".gender p").html(data.gender);
+    		chartinfo = data;
 	    },
 
 	    error: function(){
-	      console.log("direction error");
+	      console.log("no candidate data");
 	    }
 	});
 
+}
+
+function basicinfo(){
+    $(".profile .container").css({
+            'background-image': 'url("../image/'+chartinfo.name+'.jpg"'
+        });
+
+    if(chartinfo.party=="Republican"){
+        $(".namecard_background").css({
+            'background-image': 'url("../image/replogo.png")'
+        });
+        $(".profile").css({
+            'border': '10px solid rgba(51, 51, 255, 1)'
+        });
+    } else if (chartinfo.party=="Democratic"){
+        $(".namecard_background").css({
+            'background-image': 'url("../image/demlogo.png")'
+        });
+        $(".profile").css({
+            'border': '10px solid rgba(255, 51, 51, 1)'
+        });
+    } else if (chartinfo.party=="Green"){
+        $(".namecard_background").css({
+            'background-image': 'url("../image/grelogo.png")'
+        });
+        $(".profile").css({
+            'border': '10px solid rgba(51,255, 51, 1)'
+        });
+    } else {
+        $(".namecard_background").css({
+            'background-image': 'url("../image/indlogo.png")'
+        });
+        $(".profile").css({
+            'border': '10px solid rgba(255, 117, 26, 1)'
+        });
+    }
+
+    $(".namecard .container").append('<p id="name">'+chartinfo.name+'</p>');
+    $(".namecard .container").append('<p id="campaign_target">For President</p>');
+    $(".namecard .container").append('<div id="namecard_underline"></div>');
+    $(".namecard .container").append('<p id="info1">'+charinfo.party+'</p>');
+    $(".namecard .container").append('<p id="info2">'+chartinfo.position+'</p>');
 }
 
 
