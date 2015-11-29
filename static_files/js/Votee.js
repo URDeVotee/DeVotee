@@ -45,6 +45,85 @@ function infoquery(){
 	      console.log("direction error");
 	    }
 	});
+
 }
+
+
+$(function () {
+
+    $('#container').highcharts({
+
+        chart: {
+            polar: true,
+            type: 'line',
+            backgroundColor: null,
+            plotBorderColor: '#606063'
+        },
+
+        title: {
+            text: '',
+            x: -80
+        },
+
+        pane: {
+            size: '80%'
+        },
+
+        xAxis: {
+            categories: ['Abortion', 'Gun Control', 'Military', 'Customer Support',
+                    'Religion', 'Obamacare'],
+            tickmarkPlacement: 'on',
+            lineColor: 'rgb(0, 0, 0)',
+            labels: {
+		         style: {
+		            fontSize: '12px',
+		            color: 'black'
+		         }
+		      },
+            minorGridLineColor: 'gb(0, 0, 0)',
+            lineWidth: 0
+
+        },
+
+        yAxis: {
+            gridLineInterpolation: 'polygon',
+            lineWidth: 0,
+            lineColor: 'rgb(0, 0, 0)',
+            labels: {
+		         style: {
+		            fontSize: '12px',
+		            color: 'black'
+		         }
+		      },
+            minorGridLineColor: 'gb(0, 0, 0)',
+            min: 0
+        },
+
+        tooltip: {
+            shared: true,
+            pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+        },
+
+        legend: {
+            align: 'right',
+            verticalAlign: 'top',
+            y: 70,
+            layout: 'vertical'
+        },
+
+        series: [{
+            name: 'You',
+            data: [2,1,0,1,0,2],
+            pointPlacement: 'on'
+        }, {
+            name: "Candidate",
+            data: [1.5,1,0.2,1.1,0.3,1],
+            pointPlacement: 'on'
+        }]
+
+    });
+});
+
+
 
 $(document).ready(main);
