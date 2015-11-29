@@ -199,7 +199,8 @@ app.get('/getCandidate', function (req, res){
   for (var i = 0; i < candidates.length; ++i)
   {
     var tempDist = distance(candidates[i][3], userScore);
-    if (tempDist < min){
+    if (tempDist < min[0]){
+      //console.log("test");
       min[0] = tempDist;
       min[1] = i;
     }
