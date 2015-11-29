@@ -30,12 +30,13 @@ var main = function() {
 
 function infoquery(){
 	$.ajax({
-		url: "/geninfo",
+		url: "/getCandidate",
 		type: "GET",
     	dataType: "json",
 
     	success: function(data){
     		chartinfo = data;
+            basicinfo();
 	    },
 
 	    error: function(){
