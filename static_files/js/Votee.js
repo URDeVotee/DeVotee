@@ -48,8 +48,9 @@ function infoquery(){
 }
 
 function basicinfo(){
-    $(".profile .container").css({
-            'background-image': 'url("../image/'+chartinfo.name+'.jpg"'
+    $(".profile").css({
+            'background-image': 'url("../image/'+chartinfo.name+'.jpg"',
+            'background-size': 'cover'
         });
 
     if(chartinfo.party=="Republican"){
@@ -85,13 +86,13 @@ function basicinfo(){
     $(".namecard .container").append('<p id="name">'+chartinfo.name+'</p>');
     $(".namecard .container").append('<p id="campaign_target">For President</p>');
     $(".namecard .container").append('<div id="namecard_underline"></div>');
-    $(".namecard .container").append('<p id="info1">'+charinfo.party+'</p>');
+    $(".namecard .container").append('<p id="info1">'+chartinfo.party+'</p>');
     $(".namecard .container").append('<p id="info2">'+chartinfo.position+'</p>');
 }
 
 function chart(){
-    var array = charinfo.score;
-    var arrayLength = charinfo.score.length;
+    var array = chartinfo.score;
+    var arrayLength = chartinfo.score.length;
     var topic = [];
     var candidateattitude = [];
     var userattitude = [];

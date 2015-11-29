@@ -55,9 +55,6 @@
 .profile .container {
 	width: 250px;
 	height:250px;
-	background-image: url("../image/chris_christie.jpg");
-	background-size: cover;
-	background-color: black;
 	z-index:2;
 }
 

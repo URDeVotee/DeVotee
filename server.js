@@ -51,11 +51,11 @@ helper function: calculate the similarity between the candidate and the user
 function distance(candidate, user)
 {
   var sum = 0;
-  console.log(candidate[0][0]);
+  //console.log(candidate[0][0]);
   for (var i = 0; i < user.length; ++i) {
     for (var j = 0; j < candidate.length; ++j) {
       //if issue names are the same
-      console.log(user[i][0]);
+      //console.log(user[i][0]);
       if (user[i][0] == candidate[j][0])
       {
         sum += (user[i][1]-candidate[j][1]) * (user[i][1]-candidate[j][1]);
@@ -238,6 +238,8 @@ app.get('/getCandidate', function (req, res){
     position:candidates[bestCandidates][2],
     score:result
   };
+
+  console.log(cand);
   res.send(cand);
    });
 });
