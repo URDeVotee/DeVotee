@@ -51,9 +51,11 @@ helper function: calculate the similarity between the candidate and the user
 function distance(candidate, user)
 {
   var sum = 0;
-  for (var i = 0; i <= user.length; ++i) {
-    for (var j = 0; j <= candidate.length; ++j) {
+  console.log(candidate[0][0]);
+  for (var i = 0; i < user.length; ++i) {
+    for (var j = 0; j < candidate.length; ++j) {
       //if issue names are the same
+      console.log(user[i][0]);
       if (user[i][0] == candidate[j][0])
       {
         sum += (user[i][1]-candidate[j][1]) * (user[i][1]-candidate[j][1]);
@@ -186,7 +188,11 @@ app.get('/geninfo', function (req, res){
 app.get('/getCandidate', function (req, res){
   var username = req.mySession.username;
   db.getUserScore(username, function(userScore){
+    userScore = JSON.stringify(userScore);
     userScore = JSON.parse(userScore);
+    //console.log(JSON.parse(userScore.score));
+    userScore = JSON.parse(userScore.score);
+    console.log(userScore[0][0]);
     var result = [];
   var min = [9999999, 0];
 
@@ -203,10 +209,10 @@ app.get('/getCandidate', function (req, res){
   //construct the result
   for (var i = 0; i < userScore.length; ++i)
   {
-    for (var j = 0; j < candidatesScore.length; ++j)
+    for (var j = 0; j < candidateScore.length; ++j)
     {
-      if (userScore[i][0] == candidatesScore[j][0]){
-        var temp = [userScore[i][0], candidatesScore[j][1], userScore[i][1]];
+      if (userScore[i][0] == candidateScore[j][0]){
+        var temp = [userScore[i][0], candidateScore[j][1], userScore[i][1]];
         result.push(temp);
         break;
       }
@@ -233,12 +239,14 @@ app.get('/getCandidate', function (req, res){
     score:result
   };
   res.send(cand);
-  });
+   });
 });
 
 app.post('/vote/submit', function (req, res){
   var postbody = req.body;
+  console.log(postbody.data);
   var result = JSON.stringify(postbody.data);
+  console.log(result);
   var username = req.mySession.username;
 
   db.insertUserScore(username, result);

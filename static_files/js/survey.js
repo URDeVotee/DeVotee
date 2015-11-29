@@ -380,7 +380,8 @@ var main = function() {
 		      if (typeof data.redirect == 'string'){
 		      	document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
 		        window.location = data.redirect;
-		    },
+		    	}
+			},
 		    error: function(){
 		      console.log("No Candidate");
 		    }

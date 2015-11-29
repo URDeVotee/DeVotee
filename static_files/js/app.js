@@ -80,7 +80,7 @@ function checkCookie() {
 function setCookie() {
   var now = new Date();
   var time = now.getTime();
-  var expireTime = time + 1000*30;
+  var expireTime = time + 1000*120;
   now.setTime(expireTime);
 	document.cookie = $("#username").val()+"/"+$("#password").val()+';expires='+now.toGMTString()+';path=/';
 }

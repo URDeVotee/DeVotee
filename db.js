@@ -147,7 +147,8 @@ module.exports = {
 				callback("error");
 			}
 			if (results.length > 0){
-				callback(results);
+				console.log(results[0]);
+				callback(results[0]);
 			}
 			else {
 				callback("notExists");
