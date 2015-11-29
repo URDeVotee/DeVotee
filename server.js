@@ -129,14 +129,14 @@ app.get('/users/login', function (req, res){
   //if the user logged in
   var username = req.mySession.username;
   if (req.mySession && username){
-    db.checkGenInfo(username, function(msg){
-      if (msg == "exists"){
+    db.getUserScore(username, function(msg){
+      if (msg == "notExists"){
         //send the third page
         console.log("send geninfo page");
-        res.send({redirect: '/Votee.html'});
+        res.send({redirect: '/survey.html'});
       }else {
         console.log("send survey page");
-        res.send({redirect:'/survey.html'});
+        res.send({redirect:'/Votee.html'});
       }
     });
   }
@@ -252,7 +252,14 @@ app.post('/vote/submit', function (req, res){
   console.log(result);
   var username = req.mySession.username;
 
-  db.insertUserScore(username, result);
+  db.getUserScore(username, function (info){
+    if (info == "notExists"){
+      db.insertUserScore(username, result);
+    } else {
+      db.updateUserScore(username, result);
+    }
+  });
+  
 
   res.send({redirect: '/Votee.html'});
 });

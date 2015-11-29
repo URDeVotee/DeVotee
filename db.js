@@ -154,6 +154,16 @@ module.exports = {
 				callback("notExists");
 			}
 		});
+	},
+
+	updateUserScore: function(name, score)
+	{
+		var query = "UPDATE userScore SET score = ? WHERE username = ?";
+		connection.query(query, [score, name], function (error, results, fields){
+			if (error){
+				console.log(error);
+			}
+		});
 	}
 	// updateUserData: function(oldname, newname, newpwd)
 	// {
