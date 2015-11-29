@@ -126,8 +126,34 @@ module.exports = {
 				callback("notExists");
 			}
 		});
-	}
+	},
 
+	insertUserScore: function(name, score)
+	{
+		var query = "INSERT INTO userScore (username, score) VALUE (?, ?)";
+		connection.query(query, [name, score], function (error, results, fields){
+			if (error){
+				console.log(error);
+			}
+		});
+	},
+
+	getUserScore: function(name, callback)
+	{
+		var query = "SELECT score FROM userScore WHERE username = ?";
+		connection.query(query, [name], function(error, results, fields){
+			if (error){
+				console.log(error);
+				callback("error");
+			}
+			if (results.length > 0){
+				callback(results);
+			}
+			else {
+				callback("notExists");
+			}
+		});
+	}
 	// updateUserData: function(oldname, newname, newpwd)
 	// {
 	// 	var updateQuery = "UPDATE users SET username = ?, password = ? WHERE username = ?";
