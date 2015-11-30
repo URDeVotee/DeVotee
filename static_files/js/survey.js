@@ -352,7 +352,7 @@ var main = function() {
 					);
 				});
 
-				drag();
+				selection_handler();
 				$('.detail').fadeIn(1000);
 				$('.submit').fadeIn(1000);
 				$('.background').css({'-webkit-filter': 'blur(1px)'});
@@ -477,7 +477,7 @@ function priority(age,occupation,gender){
 
 function appendtopic(){
 	for (var i = 0; i < 8; i++) {
-		$(".topics").append('<li><div class="above"><h1>'+topics[i].head+'</h1><p>'+topics[i].detail+'</p></div><div class="below abortion"><p class="text">Neutral</p><div class="attitude"><div class="range"><input class="attitude-range" type="range" min="-50" max="50"></div></div></div></li>');
+		$(".topics").append('<li><div class="above"><h1 id="head">'+topics[i].head+'</h1><p>'+topics[i].detail+'</p></div><div class="below abortion"><p class="text">Neutral</p><div class="attitude"><div class="range"><input class="attitude-range" type="range" min="-50" max="50"></div></div></div></li>');
 	}
 }
 
@@ -503,6 +503,164 @@ function drag(){
 			case (10 <= val &&  val < 30): text.html("Favor");break;
 			case (30 <= val &&  val < 50): text.html("Strongly Favor");break;
 		}
+		$(this).parents('.below').css({
+			'background-color': 'rgb('+red+','+green+','+blue+')'
+		});
+		//alert('rgb('+red+','+green+','+blue+')');
+	});
+}
+
+function selection_handler(){
+	$('.attitude-range').mousemove(function(event){
+		var target = event.target;
+		var val = target.value;
+		//alert(attitude);
+		if (val<=0){
+			var red = val/(-50)*240;
+			var green = (50-(-val))/50*240;
+			var blue = 0;
+		}else {
+			var red = 0;
+			var green = (50-val)/50*240;
+			var blue = val/(50)*240;
+		}
+		var text = $(this).parents('.below').children('.text');
+		var topic = $(this).parents('li').children('.above').children('h1').html();
+		switch(topic) {
+		    case "ABORTION":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Immoral Murder");break;
+					case (-30 <= val &&  val < -10): text.html("Fetus's Right");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("With Restriction");break;
+					case (30 <= val &&  val < 50): text.html("Right & Freedom");break;
+				}
+		        break;
+		    case "FEMALE EMPLOYEE":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("No Intervention");break;
+					case (-30 <= val &&  val < -10): text.html("No Enforce");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Favored");break;
+					case (30 <= val &&  val < 50): text.html("Law Enforce");break;
+				}
+		        break;
+		    case "SAME-SEX MARRIAGE":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Immoral");break;
+					case (-30 <= val &&  val < -10): text.html("Not Marriage");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Equal Respect");break;
+					case (30 <= val &&  val < 50): text.html("Absolutely Equal");break;
+				}
+		        break;
+		    case "GOD":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Violate Constitution");break;
+					case (-30 <= val &&  val < -10): text.html("Religious Diverse");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("More Exposure");break;
+					case (30 <= val &&  val < 50): text.html("American Value");break;
+				}
+		        break;
+		    case "EPA REGULATION":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Nature First");break;
+					case (-30 <= val &&  val < -10): text.html("Same Right");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Huamn First");break;
+					case (30 <= val &&  val < 50): text.html("Human Domain");break;
+				}
+		        break;
+		    case "CRIME":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Loose Law");break;
+					case (-30 <= val &&  val < -10): text.html("Effectively Enforce");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Stric Law");break;
+					case (30 <= val &&  val < 50): text.html("Strictly Enforce");break;
+				}
+		        break;
+		    case "GUN OWNERSHIP":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Limit Guns");break;
+					case (-30 <= val &&  val < -10): text.html("Strict Registration");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Only Instrument");break;
+					case (30 <= val &&  val < 50): text.html("Absolute Right");break;
+				}
+		        break;
+		    case "OBAMACARE":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Remove");break;
+					case (-30 <= val &&  val < -10): text.html("More Market-Led");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Good Goal");break;
+					case (30 <= val &&  val < 50): text.html("More Coverage");break;
+				}
+		        break;
+		    case "GREEN ENERGY":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("No Global Warning");break;
+					case (-30 <= val &&  val < -10): text.html("Do Nothing");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Market-Led Solution");break;
+					case (30 <= val &&  val < 50): text.html("Immediate Priority");break;
+				}
+		        break;
+		    case "MARIJUANA":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("No Prohibition");break;
+					case (-30 <= val &&  val < -10): text.html("Medical Marijuana");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("More Restriction");break;
+					case (30 <= val &&  val < 50): text.html("Immoral Drug");break;
+				}
+		        break;
+		    case "STIMULUS":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("No Fedral Invovled");break;
+					case (-30 <= val &&  val < -10): text.html("Reduce Regulation");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Company Funding");break;
+					case (30 <= val &&  val < 50): text.html("Fedral Job");break;
+				}
+		        break;
+		    case "WEALTHY TAX":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("No Income Tax");break;
+					case (-30 <= val &&  val < -10): text.html("Flat Tax");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Preserve Deduction");break;
+					case (30 <= val &&  val < 50): text.html("Society's Conerstone");break;
+				}
+		        break;
+		    case "ILLEGAL ALIENS":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Fewer Immigration");break;
+					case (-30 <= val &&  val < -10): text.html("Ban Illegal");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Fewer Restrictions");break;
+					case (30 <= val &&  val < 50): text.html("No Restriction");break;
+				}
+		        break;
+		    case "SOCIAL SECURITY":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Fedral Control");break;
+					case (-30 <= val &&  val < -10): text.html("Refrom");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Control on Investment");break;
+					case (30 <= val &&  val < 50): text.html("Private Plans");break;
+				}
+		        break;
+		}
+		// switch (true) {
+		// 	case (-50 <= val &&  val < -30): text.html("Strongly Oppose");break;
+		// 	case (-30 <= val &&  val < -10): text.html("Oppose");break;
+		// 	case (-10 <= val &&  val < 10): text.html("Neutral");break;
+		// 	case (10 <= val &&  val < 30): text.html("Favor");break;
+		// 	case (30 <= val &&  val < 50): text.html("Strongly Favor");break;
+		// }
 		$(this).parents('.below').css({
 			'background-color': 'rgb('+red+','+green+','+blue+')'
 		});
