@@ -33,7 +33,7 @@ var female_employee = {
 
 var same_sex_marriage = {
 	head:"SAME-SEX MARRIAGE",
-    detail:"Legal and Natrual",
+    detail:"Respect and Natrual",
     age_weight:3,
     age:["ADULT","MIDDLE AGE","SENIOR CITIZEN"],
     occupation_weight:2,
@@ -477,7 +477,7 @@ function priority(age,occupation,gender){
 
 function appendtopic(){
 	for (var i = 0; i < 8; i++) {
-		$(".topics").append('<li><div class="above"><h1 id="head">'+topics[i].head+'</h1><p>'+topics[i].detail+'</p></div><div class="below abortion"><p class="text">Neutral</p><div class="attitude"><div class="range"><input class="attitude-range" type="range" min="-50" max="50"></div></div></div></li>');
+		$(".topics").append('<li><div class="above"><h2 id="head">'+topics[i].head+'</h1><p>'+topics[i].detail+'</p></div><div class="below abortion"><p class="text">Neutral</p><div class="attitude"><div class="range"><input class="attitude-range" type="range" min="-50" max="50"></div></div></div></li>');
 	}
 }
 
@@ -525,7 +525,7 @@ function selection_handler(){
 			var blue = val/(50)*240;
 		}
 		var text = $(this).parents('.below').children('.text');
-		var topic = $(this).parents('li').children('.above').children('h1').html();
+		var topic = $(this).parents('li').children('.above').children('h2').html();
 		switch(topic) {
 		    case "ABORTION":
 		    	switch (true) {
@@ -586,7 +586,7 @@ function selection_handler(){
 					case (-50 <= val &&  val < -30): text.html("Limit Guns");break;
 					case (-30 <= val &&  val < -10): text.html("Strict Registration");break;
 					case (-10 <= val &&  val < 10): text.html("Neutral");break;
-					case (10 <= val &&  val < 30): text.html("Only Instrument");break;
+					case (10 <= val &&  val < 30): text.html("More Restriction");break;
 					case (30 <= val &&  val < 50): text.html("Absolute Right");break;
 				}
 		        break;
@@ -601,7 +601,7 @@ function selection_handler(){
 		        break;
 		    case "GREEN ENERGY":
 		    	switch (true) {
-					case (-50 <= val &&  val < -30): text.html("No Global Warning");break;
+					case (-50 <= val &&  val < -30): text.html("Global Warming Lie");break;
 					case (-30 <= val &&  val < -10): text.html("Do Nothing");break;
 					case (-10 <= val &&  val < 10): text.html("Neutral");break;
 					case (10 <= val &&  val < 30): text.html("Market-Led Solution");break;
@@ -611,7 +611,7 @@ function selection_handler(){
 		    case "MARIJUANA":
 		    	switch (true) {
 					case (-50 <= val &&  val < -30): text.html("No Prohibition");break;
-					case (-30 <= val &&  val < -10): text.html("Medical Marijuana");break;
+					case (-30 <= val &&  val < -10): text.html("Legally Medical");break;
 					case (-10 <= val &&  val < 10): text.html("Neutral");break;
 					case (10 <= val &&  val < 30): text.html("More Restriction");break;
 					case (30 <= val &&  val < 50): text.html("Immoral Drug");break;
@@ -620,10 +620,10 @@ function selection_handler(){
 		    case "STIMULUS":
 		    	switch (true) {
 					case (-50 <= val &&  val < -30): text.html("No Fedral Invovled");break;
-					case (-30 <= val &&  val < -10): text.html("Reduce Regulation");break;
+					case (-30 <= val &&  val < -10): text.html("Market-Led");break;
 					case (-10 <= val &&  val < 10): text.html("Neutral");break;
-					case (10 <= val &&  val < 30): text.html("Company Funding");break;
-					case (30 <= val &&  val < 50): text.html("Fedral Job");break;
+					case (10 <= val &&  val < 30): text.html("Government-Led");break;
+					case (30 <= val &&  val < 50): text.html("Fedral's Job");break;
 				}
 		        break;
 		    case "WEALTHY TAX":
@@ -653,6 +653,42 @@ function selection_handler(){
 					case (30 <= val &&  val < 50): text.html("Private Plans");break;
 				}
 		        break;
+		    case "FREE TRADE":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Made in USA");break;
+					case (-30 <= val &&  val < -10): text.html("Fair Trade Instead");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Trade With Restriction");break;
+					case (30 <= val &&  val < 50): text.html("Globaliztion");break;
+				}
+		        break;
+		    case "MILITARY":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Defence only");break;
+					case (-30 <= val &&  val < -10): text.html("Build Smart");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Stay Strong");break;
+					case (30 <= val &&  val < 50): text.html("World Police");break;
+				}
+		        break;
+		    case "AMERICAN EXCEPTIONAL":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Equal Countries");break;
+					case (-30 <= val &&  val < -10): text.html("Multilateralism");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("US Interests First");break;
+					case (30 <= val &&  val < 50): text.html("Restrict UN");break;
+				}
+		        break;
+		    case "FOREIGN ENTANGLE":
+		    	switch (true) {
+					case (-50 <= val &&  val < -30): text.html("Always Prepared");break;
+					case (-30 <= val &&  val < -10): text.html("Internve When Necessary");break;
+					case (-10 <= val &&  val < 10): text.html("Neutral");break;
+					case (10 <= val &&  val < 30): text.html("Less Military Presence");break;
+					case (30 <= val &&  val < 50): text.html("No Oversea Military");break;
+				}
+		        break;
 		}
 		// switch (true) {
 		// 	case (-50 <= val &&  val < -30): text.html("Strongly Oppose");break;
@@ -669,7 +705,7 @@ function selection_handler(){
 }
 
 function upload(){
-	var topicname = $(".above h1");
+	var topicname = $(".above h2");
 	var topicattitude = document.getElementsByClassName("attitude-range");
 	for (var i = 0; i < 8; i++){
 		result.push([topicname[i].innerHTML,topicattitude[i].value]);
