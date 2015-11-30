@@ -1,6 +1,8 @@
 //@Version 2.1
 var username;
 var main = function() {
+  $('body').fadeOut(0);
+    $('body').fadeIn(400);
   opened = false;
   signup = false;
   $('.toggle-button').click(function(){
@@ -145,8 +147,11 @@ function redirectTo(){
             },
       success: function( data ) {
         if (data.username) {
-		      setCookieLogin();
-          redirectTo();
+          $('body').fadeOut(200);
+          setTimeout(function() {
+            setCookieLogin();
+            redirectTo();
+          }, 200);
         }
         else if (data.error){
           alert(data.error);
@@ -159,5 +164,8 @@ function redirectTo(){
     });
   });
 
+function onload(){
+    $('body').fadeOut(0);
+}
 
 $(document).ready(main);

@@ -1,13 +1,18 @@
 //@Version 0.5
 var chartinfo;
 var main = function() {
+    $('body').fadeOut(0);
+    $('body').fadeIn(400);
 	infoquery();
 
 	$('.revote').click(function() {
-		window.location.href = "survey.html";
+        $('body').fadeOut(200);
+        setTimeout(function() {
+                window.location.href = "survey.html";
+            }, 300);
 	});
 
-	$('.Abstain').click(function() {
+	$('.logout').click(function() {
 		$.ajax({
 		    url: "users/logout",
 		    type: "GET",
@@ -15,8 +20,11 @@ var main = function() {
 
 		    success: function(data){
 		      if (typeof data.redirect == 'string'){
-		      	document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		        window.location = data.redirect;
+                $('body').fadeOut(200);
+                setTimeout(function() {
+                    document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    window.location = data.redirect;
+                }, 300);
 		    }
 		      else
 		        console.log("not a string");
@@ -108,13 +116,27 @@ function chart(){
     }
 
     $(function () {
+        Highcharts.setOptions({
+                colors: ['rgb(255, 77, 77)', 'rgb(77, 77, 255)']
+            });
+
         $('#container').highcharts({
 
+            credits: {
+                enabled: false
+            },
             chart: {
                 polar: true,
-                type: 'line',
+                type: 'area',
                 backgroundColor: null,
-                plotBorderColor: 'rgb(0, 0, 0)'
+                plotBorderColor: '#000000'
+            },
+
+            plotOptions: {
+                series: {
+                    fillOpacity: 0.1,
+                    lineWidth: 2
+                }
             },
 
             title: {
@@ -133,10 +155,10 @@ function chart(){
                 labels: {
                      style: {
                         fontSize: '12px',
-                        color: 'black'
+                        color: '#6e6e70'
                      }
                   },
-                minorGridLineColor: 'gb(0, 0, 0)',
+                minorGridLineColor: 'rgb(0, 0, 0)',
                 lineWidth: 0
 
             },
@@ -148,10 +170,10 @@ function chart(){
                 labels: {
                      style: {
                         fontSize: '12px',
-                        color: 'black'
+                        color: '#6e6e70'
                      }
                   },
-                minorGridLineColor: 'gb(0, 0, 0)',
+                minorGridLineColor: 'rgb(0, 0, 0)',
                 min: 0
             },
 
@@ -161,10 +183,8 @@ function chart(){
             },
 
             legend: {
-                align: 'right',
                 verticalAlign: 'top',
-                y: 70,
-                layout: 'vertical'
+                layout: 'vertical',
             },
 
             series: [{
@@ -175,11 +195,20 @@ function chart(){
                 name: "Candidate",
                 data: candidateattitude,
                 pointPlacement: 'on'
-            }]
+            }],
+
+            navigation: {
+                buttonOptions: {
+                    align: 'center',
+                    enabled: false
+                }
+            }
 
         });
     });
 }
+
+
 
 
 

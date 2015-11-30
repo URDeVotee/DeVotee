@@ -227,7 +227,8 @@ var topics = [abortion, female_employee, same_sex_marriage, god, epa_regulation,
 illegal_aliens, social_security, free_trade, military, american_exceptionalism, foreign_entanglements];
 
 var main = function() {
-	
+	$('body').fadeOut(0);
+    $('body').fadeIn(400);
 	setTimeout(function() {
 		info_flyin();
 	}, 1500);
@@ -353,12 +354,11 @@ var main = function() {
 		    dataType: "json",
 
 		    success: function(data){
-		      if (typeof data.redirect == 'string'){
-		      	document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		        window.location = data.redirect;
-		    }
-		      else
-		        console.log("not a string");
+		      $('body').fadeOut(200);
+                setTimeout(function() {
+                    document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    window.location = data.redirect;
+                }, 200);
 		    },
 		    error: function(){
 		      console.log("direction error");
@@ -377,10 +377,11 @@ var main = function() {
 	        },
 
 		    success: function(data){
-		      if (typeof data.redirect == 'string'){
-		      	document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		        window.location = data.redirect;
-		    	}
+		      $('body').fadeOut(200);
+                setTimeout(function() {
+                    document.cookie = document.cookie + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                    window.location = data.redirect;
+                }, 200);
 			},
 		    error: function(){
 		      console.log("No Candidate");
@@ -502,6 +503,10 @@ function upload(){
 	for (var i = 0; i < 8; i++){
 		result.push([topicname[i].innerHTML,topicattitude[i].value]);
 	}
+}
+
+function onload(){
+    $('body').fadeOut(0);
 }
 
 $(document).ready(main);
