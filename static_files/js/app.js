@@ -49,6 +49,17 @@ var main = function() {
 		}
     });
 	
+  $(".Sign-up").keyup(function(event){
+      if(event.keyCode == 13){
+          $("#Sign-up-submit").click();
+      }
+  });
+
+  $(".menu").keyup(function(event){
+      if(event.keyCode == 13){
+          $("#Log-in-submit").click();
+      }
+  });
 }
 	
 function checkCookie() {

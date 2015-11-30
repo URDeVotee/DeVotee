@@ -202,6 +202,7 @@ function chart(){
             legend: {
                 verticalAlign: 'top',
                 layout: 'vertical',
+                y: -20
             },
 
             series: [{
