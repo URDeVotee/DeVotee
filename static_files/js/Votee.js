@@ -2,8 +2,13 @@
 var chartinfo;
 var main = function() {
     $('body').fadeOut(0);
+    $('.profile').fadeOut(0);
+    $('.namecard').fadeOut(0);
+    $('.plot').fadeOut(0);
     $('body').fadeIn(400);
-	infoquery();
+    setTimeout(function() {
+            infoquery();
+        }, 1000);
 
 	$('.revote').click(function() {
         $('body').fadeOut(200);
@@ -46,6 +51,18 @@ function infoquery(){
     		chartinfo = data;
             basicinfo();
             chart();
+            setTimeout(function() {
+                $('.background').css({'-webkit-filter': 'blur(1px)'});
+                $('.profile').fadeIn(500);
+            }, 500);
+            setTimeout(function() {
+                $('.background').css({'-webkit-filter': 'blur(2px)'});
+                $('.namecard').fadeIn(500);
+            }, 1500);
+            setTimeout(function() {
+                $('.background').css({'-webkit-filter': 'blur(3px)'});
+                $('.plot').fadeIn(500);
+            }, 2500);
 	    },
 
 	    error: function(){
@@ -145,7 +162,7 @@ function chart(){
             },
 
             pane: {
-                size: '80%'
+                size: '95%'
             },
 
             xAxis: {
