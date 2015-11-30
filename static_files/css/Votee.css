@@ -5,6 +5,10 @@
 @import url(https://fonts.googleapis.com/css?family=Anton);
 @import url(https://fonts.googleapis.com/css?family=Patua+One);
 
+body {
+	visibility:hidden;
+}
+
 .background {
 	background-image: url("../image/Seal.PNG");
 	background-size: cover;

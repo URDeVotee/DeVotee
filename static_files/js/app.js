@@ -2,7 +2,10 @@
 var username;
 var main = function() {
   $('body').fadeOut(0);
-    $('body').fadeIn(400);
+  setTimeout(function() {
+            $("body").css('visibility','visible');
+        }, 100);
+  $('body').fadeIn(400);
   opened = false;
   signup = false;
   $('.toggle-button').click(function(){
@@ -101,7 +104,7 @@ function setCookie() {
 function setCookieLogin() {
   var now = new Date();
   var time = now.getTime();
-  var expireTime = time + 1000*30;
+  var expireTime = time + 1000*120;
   now.setTime(expireTime);
 	document.cookie = $("#username-log-in").val()+"/"+$("#password-log-in").val()+';expires='+now.toGMTString()+';path=/';
 }

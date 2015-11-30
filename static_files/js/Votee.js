@@ -5,7 +5,11 @@ var main = function() {
     $('.profile').fadeOut(0);
     $('.namecard').fadeOut(0);
     $('.plot').fadeOut(0);
+    setTimeout(function() {
+            $("body").css('visibility','visible');
+        }, 100);
     $('body').fadeIn(400);
+
     setTimeout(function() {
             infoquery();
         }, 1000);

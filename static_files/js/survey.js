@@ -228,6 +228,9 @@ illegal_aliens, social_security, free_trade, military, american_exceptionalism, 
 
 var main = function() {
 	$('body').fadeOut(0);
+	setTimeout(function() {
+            $("body").css('visibility','visible');
+        }, 100);
     $('body').fadeIn(400);
 	setTimeout(function() {
 		info_flyin();
@@ -330,13 +333,23 @@ var main = function() {
 			setTimeout(function() {
 				priority(age_value,occupation_value,gender_value);
 				appendtopic();
-				$('.above').hover(function(e){
+				$('.above').mouseenter(function(e){
 					currentElement = $(e.currentTarget);
-					currentElement.fadeOut(300);
+					currentElement.fadeOut(200);
+					currentElement.parents('li').children('.below').animate({
+						width: "220px",
+			            height: "220px"
+			        }, 200
+					);
 				});
 
 				$('.below').mouseleave(function(){
-					$('.above').fadeIn(300);
+					$('.above').fadeIn(200);
+					$('.below').animate({
+						width: "180px",
+			            height: "180px"
+			        }, 200
+					);
 				});
 
 				drag();
@@ -464,7 +477,7 @@ function priority(age,occupation,gender){
 
 function appendtopic(){
 	for (var i = 0; i < 8; i++) {
-		$(".topics").append('<li><div class="above"><h1>'+topics[i].head+'</h1><p>'+topics[i].detail+'</p></div><div class="below abortion"><p class="text">Neutrual</p><div class="attitude"><div class="range"><input class="attitude-range" type="range" min="-50" max="50"></div></div></div></li>');
+		$(".topics").append('<li><div class="above"><h1>'+topics[i].head+'</h1><p>'+topics[i].detail+'</p></div><div class="below abortion"><p class="text">Neutral</p><div class="attitude"><div class="range"><input class="attitude-range" type="range" min="-50" max="50"></div></div></div></li>');
 	}
 }
 
@@ -486,7 +499,7 @@ function drag(){
 		switch (true) {
 			case (-50 <= val &&  val < -30): text.html("Strongly Oppose");break;
 			case (-30 <= val &&  val < -10): text.html("Oppose");break;
-			case (-10 <= val &&  val < 10): text.html("Neutrual");break;
+			case (-10 <= val &&  val < 10): text.html("Neutral");break;
 			case (10 <= val &&  val < 30): text.html("Favor");break;
 			case (30 <= val &&  val < 50): text.html("Strongly Favor");break;
 		}
