@@ -619,11 +619,11 @@ function selection_handler(){
 		        break;
 		    case "STIMULUS":
 		    	switch (true) {
-					case (-50 <= val &&  val < -30): text.html("No Fedral Invovled");break;
+					case (-50 <= val &&  val < -30): text.html("No Federal Invovled");break;
 					case (-30 <= val &&  val < -10): text.html("Market-Led");break;
 					case (-10 <= val &&  val < 10): text.html("Neutral");break;
 					case (10 <= val &&  val < 30): text.html("Government-Led");break;
-					case (30 <= val &&  val < 50): text.html("Fedral's Job");break;
+					case (30 <= val &&  val < 50): text.html("Federal's Job");break;
 				}
 		        break;
 		    case "WEALTHY TAX":
@@ -646,7 +646,7 @@ function selection_handler(){
 		        break;
 		    case "SOCIAL SECURITY":
 		    	switch (true) {
-					case (-50 <= val &&  val < -30): text.html("Fedral Control");break;
+					case (-50 <= val &&  val < -30): text.html("Federal Control");break;
 					case (-30 <= val &&  val < -10): text.html("Refrom");break;
 					case (-10 <= val &&  val < 10): text.html("Neutral");break;
 					case (10 <= val &&  val < 30): text.html("Control on Investment");break;
