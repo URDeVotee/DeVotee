@@ -1,0 +1,203 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(https://fonts.googleapis.com/css?family=Pacifico|UnifrakturMaguntia);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Anton);
+@import url(https://fonts.googleapis.com/css?family=Patua+One);
+
+body {
+	visibility:hidden;
+}
+
+.background {
+	background-image: url("../image/Seal.PNG");
+	background-size: cover;
+	width:100%;
+	height:100%;
+	position:absolute;
+	opacity: 0.8;
+	z-index: -1;
+	opacity: 0.8;
+}
+
+.upcover {
+	position: absolute;
+	margin-top: -1%;
+	top:0;
+	left:0;
+	right:0;
+	width:100%;
+	height:7%;
+	background-color:rgba(0, 0, 255, 1);
+	-webkit-filter: blur(0px);
+	z-index:2;
+}
+
+.downcover {
+	position: absolute;
+	margin-bottom: -1%;
+	bottom:0;
+	left:0;
+	right:0;
+	width:100%;
+	height:5%;
+	background-color:rgba(255, 0, 0, 1);
+	-webkit-filter: blur(0px);
+	z-index:2;
+}
+
+.profile{
+	margin-top: 60px;
+	position: absolute;
+	margin-left: 200px;
+	border-radius: 90px;
+	overflow:hidden;
+}
+
+.profile .container {
+	width: 250px;
+	height:250px;
+
+	z-index:2;
+}
+
+.namecard {
+	margin-top: 350px;
+	position: absolute;
+	width: 425px;
+	height:250px;
+	background-color:rgb(255, 255, 204);
+	margin-left: 130px;
+	border: 3px solid rgba(179, 179, 179, 0.5);
+	border-radius: 1px;
+	box-shadow: -3px 4px 2px 0px rgba(89, 89, 89,0.6);
+}
+
+.namecard_background {
+	background-position: center; 
+	background-repeat: no-repeat;
+	width:100%;
+	height:100%;
+	position: absolute;
+	opacity: 0.2;
+}
+
+#name {
+	font-family: 'Patua One', cursive;
+	text-align: center;
+	font-size: 2em;
+	margin-top: 5px;
+}
+
+#campaign_target {
+	font-family: 'Patua One', cursive;
+	text-align: center;
+	font-size: 1em;
+	margin-top: -25px;
+	font-weight: bold;
+}
+
+#namecard_underline {
+	width:100%;
+	background:rgba(0, 0, 0, 0.8);
+	height:3px;
+	margin-top: -2px;
+}
+
+#info1 {
+	font-family: 'Patua One', cursive;
+	text-align: center;
+	font-size: 1em;
+	margin-top: 12px;
+}
+
+#info2 {
+	font-family: 'Patua One', cursive;
+	text-align: center;
+	font-size: 2.5em;
+	margin-top: -5px;
+}
+
+#underline2 {
+	margin-top:-14px;
+	width:100%;
+	background:black;
+	height:40px;
+}
+
+#underline-logo {
+	cursor:default;
+	color:rgb(255, 255, 204);
+	text-align:center;
+	font-family: 'UnifrakturMaguntia', cursive;
+	font-size:28px;
+}
+
+#underline-votee {
+	font-family: 'Pacifico', cursive;
+}
+
+.plot{
+	position: absolute;
+	margin-left: 660px;
+	margin-top: 120px;
+}
+
+.plot #container {
+	width: 1200px; 
+	height: 850px; 
+	margin: 0 auto;
+}
+
+.plot .plotbackground {
+	position: absolute;
+	-webkit-filter: blur(1.5px);
+	width: 100%;
+	height: 100%;
+}
+
+.revote {
+	background-color:rgba(0, 0, 153, 0.7);
+    position: absolute;
+    margin-left: 43.5%;
+    top: 0;
+    margin-bottom: -10px;
+    font-size: 30px;
+    height: 70px;
+    width: 10%;
+    text-align: center;
+    overflow:hidden;
+    border-bottom-left-radius:15px;
+	border-bottom-right-radius:15px;
+	cursor: pointer;
+	border: 4px solid rgba(250, 250, 250, 0.7);
+	font-family: 'Montserrat', sans-serif;
+}
+
+.revote p{
+	margin-top: 30px;
+	color:rgba(250, 250, 250, 0.7);
+}
+
+.logout {
+	background-color: rgba(255, 0, 0, 0.7);
+    position: absolute;
+    margin-left: 43.5%;
+    bottom: 0;
+    margin-bottom: -10px;
+    font-size: 30px;
+    height: 70px;
+    width: 10%;
+    text-align: center;
+    overflow:hidden;
+    border-top-left-radius:15px;
+	border-top-right-radius:15px;
+	cursor: pointer;
+	border: 4px solid rgba(250, 250, 250, 0.7);
+	font-family: 'Montserrat', sans-serif;
+}
+
+.logout p{
+	margin-top: 6px;
+	color:rgba(250, 250, 250, 0.7);
+}

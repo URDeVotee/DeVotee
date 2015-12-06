@@ -70,6 +70,101 @@ module.exports = {
 		});
 	},
 
+	insertGenInfo: function(name, age, gender, occupation)
+	{
+
+		var query = "INSERT INTO gen_info (username, age, gender, occupation) VALUE (?, ?, ?, ?)";
+		connection.query(query, [name, age, gender, occupation], function (error, results, fields){
+			if (error) 
+			{
+				console.log(error);
+			}
+
+		});
+	},
+
+	checkGenInfo: function(name, callback)
+	{
+		var query = "SELECT username FROM gen_info WHERE username = ?";
+		connection.query(query, [name], function (error, results, fields){
+			if (error){
+				console.log(error);
+			}
+			if (results.length > 0){
+				callback("exists");
+			} else{
+				callback("notExists");
+			}
+		});
+	},
+
+	updateGeninfo: function(name, age, gender, occupation)
+	{
+
+		var query = "UPDATE gen_info SET age=?, gender=?, occupation=? WHERE username=?";
+		connection.query(query, [age, gender, occupation, name], function (error, results, fields){
+			if (error) 
+			{
+				console.log(error);
+			}
+
+		});
+	},
+
+	getGeninfo: function(name, callback)
+	{
+		var query = "SELECT * FROM gen_info WHERE username=?";
+		connection.query(query, [name], function (error, results, fields){
+			if (error){
+				console.log(error);
+				callback("error");
+			}
+			if (results.length > 0){
+				callback(results);
+			}
+			else {
+				callback("notExists");
+			}
+		});
+	},
+
+	insertUserScore: function(name, score)
+	{
+		var query = "INSERT INTO userScore (username, score) VALUE (?, ?)";
+		connection.query(query, [name, score], function (error, results, fields){
+			if (error){
+				console.log(error);
+			}
+		});
+	},
+
+	getUserScore: function(name, callback)
+	{
+		var query = "SELECT score FROM userScore WHERE username = ?";
+		connection.query(query, [name], function(error, results, fields){
+			if (error){
+				console.log(error);
+				callback("error");
+			}
+			if (results.length > 0){
+				console.log(results[0]);
+				callback(results[0]);
+			}
+			else {
+				callback("notExists");
+			}
+		});
+	},
+
+	updateUserScore: function(name, score)
+	{
+		var query = "UPDATE userScore SET score = ? WHERE username = ?";
+		connection.query(query, [score, name], function (error, results, fields){
+			if (error){
+				console.log(error);
+			}
+		});
+	}
 	// updateUserData: function(oldname, newname, newpwd)
 	// {
 	// 	var updateQuery = "UPDATE users SET username = ?, password = ? WHERE username = ?";
